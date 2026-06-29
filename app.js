@@ -14,8 +14,6 @@ const App = {
 
     connected: false,
 
-    selectedDevice: null,
-
     currentSample: {
 
         fat: '',
@@ -198,8 +196,6 @@ function onDeviceConnected(device) {
 
     App.connected = true;
 
-    App.selectedDevice = device;
-
     UI.updateConnectionStatus(true);
 
     UI.setConnectedDevice(device.name || 'Unknown Device');
@@ -211,8 +207,6 @@ function onDeviceConnected(device) {
 function onDeviceDisconnected() {
 
     App.connected = false;
-
-    App.selectedDevice = null;
 
     UI.updateConnectionStatus(false);
 
