@@ -48,20 +48,17 @@ const Settings = (() => {
             if (config &&
                 config.success &&
                 config.settings) {
-
+            
                 settings = {
-
+            
                     ...defaults,
-
+            
                     ...config.settings
-
+            
                 };
-
-                Logger.success(
-                    'Settings loaded.'
-                );
-
+            
             }
+                            
             else {
 
                 Logger.warning(
