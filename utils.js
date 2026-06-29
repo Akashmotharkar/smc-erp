@@ -178,8 +178,96 @@ const Utils = (() => {
 
     }
 
+    /*=====================================================
+    CLIPBOARD
+    =====================================================*/
 
+    async function copyToClipboard(text) {
 
+        await navigator.clipboard.writeText(
 
+            cleanString(text)
 
+        );
 
+    }
+
+    /*=====================================================
+    DOWNLOAD
+    =====================================================*/
+
+    function downloadText(filename, text) {
+
+        const blob = new Blob(
+
+            [text],
+
+            {
+
+                type: 'text/plain'
+
+            }
+
+        );
+
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+
+        link.href = url;
+
+        link.download = filename;
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+        URL.revokeObjectURL(url);
+
+    }
+
+    /*=====================================================
+    PUBLIC API
+    =====================================================*/
+
+    return {
+
+        formatDate,
+
+        formatTime,
+
+        formatDateTime,
+
+        toNumber,
+
+        round,
+
+        cleanString,
+
+        isEmpty,
+
+        bytesToHex,
+
+        hexToBytes,
+
+        bytesToAscii,
+
+        asciiToBytes,
+
+        formatUuid,
+
+        isFiniteNumber,
+
+        copyToClipboard,
+
+        downloadText
+
+    };
+
+})();
+
+/*=========================================================
+END OF FILE
+=========================================================*/
