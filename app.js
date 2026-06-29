@@ -216,14 +216,6 @@ function onDeviceDisconnected() {
 
 }
 
-function onRawDataReceived(rawData) {
-
-    Logger.receive('Packet received.');
-
-    UI.appendRawData(rawData);
-
-}
-
 /*=========================================================
 PARSER CALLBACK
 =========================================================*/
@@ -357,8 +349,6 @@ window.AppCallbacks = {
     onDeviceConnected,
 
     onDeviceDisconnected,
-
-    onRawDataReceived,
 
     onParsedData
 
