@@ -210,24 +210,24 @@ const Bluetooth = (() => {
             let ascii = '';
 
             if (data instanceof Uint8Array) {
-
-                hex = Array.from(data)
-                    .map(b => b.toString(16).padStart(2, '0').toUpperCase())
-                    .join(' ');
-
-                ascii = new TextDecoder().decode(data);
-
+            
+                hex = Utils.bytesToHex(data);
+            
+                ascii = Utils.bytesToAscii(data);
+            
             }
             else {
-
+            
                 ascii = String(data);
-
-                hex = Array.from(ascii)
-                    .map(ch => ch.charCodeAt(0).toString(16).padStart(2, '0').toUpperCase())
-                    .join(' ');
-
+            
+                hex = Utils.bytesToHex(
+            
+                    Utils.asciiToBytes(ascii)
+            
+                );
+            
             }
-
+            
             Logger.receive(
                 'Packet Received (' +
                 timestamp +
