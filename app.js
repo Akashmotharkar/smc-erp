@@ -49,17 +49,23 @@ async function initializeApp() {
         UI.cacheElements();
 
         Logger.success('UI elements cached.');
-
+        
         UI.bindEvents();
-
+        
         Logger.success('UI events registered.');
-
-        Settings.load();
-
+        
+        API.initialize(
+            CONFIG.API_URL
+        );
+        
+        Logger.success('API initialized.');
+        
+        await Settings.load();
+        
         Logger.success('Settings loaded.');
-
+        
         UI.setVersion(App.version);
-
+        
         await refreshSystemStatus();
 
         UI.clearValues();
