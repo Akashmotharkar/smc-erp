@@ -332,6 +332,8 @@ function handleConnectionTypeChange(type) {
     Logger.info('Connection type changed to: ' + type.toUpperCase());
 
     UI.clearDeviceList();
+    
+    Parser.reset();
 
     UI.updateConnectionStatus(false);
 
