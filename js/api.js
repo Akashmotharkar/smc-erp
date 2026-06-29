@@ -56,160 +56,48 @@ const RETRY_DELAY = 1000;
     /*=====================================================
     REQUEST
     =====================================================*/
-
+    
     async function request(action, method = 'GET', body = null) {
     
         if (!baseUrl) {
-    
-            throw new Error(
-                'Apps Script API URL is not configured.'
-            );
-    
+            throw new Error('Apps Script API URL is not configured.');
         }
-        
+    
         const url = new URL(baseUrl);
-        
-        const options = {
-        
-            method,
-        
-            headers: {
-        
-                'Content-Type': 'application/json'
-        
-            }
-        
-        };
-        
+    
         if (method === 'GET') {
-        
-            url.searchParams.set(
-                'action',
-                action
-            );
-        
+    
+            url.searchParams.set('action', action);
+    
+            Logger.api('GET: ' + url);
+    
+            const response = await fetch(url);
+    
+            const text = await response.text();
+    
+            Logger.api(text);
+    
+            return JSON.parse(text);
         }
     
-        else {
+        Logger.api('POST: ' + url);
     
-            options.body = JSON.stringify({
-    
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 action,
-    
                 data: body
+            })
+        });
     
-            });
+        const text = await response.text();
     
-        }
+        Logger.api(text);
     
-        for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    
-            const controller = new AbortController();
-    
-            const timeout = setTimeout(() => {
-    
-                controller.abort();
-    
-            }, 10000);
-    
-            options.signal = controller.signal;
-    
-            try {
-    
-                Logger.api(
-                    method +
-                    ' ' +
-                    action +
-                    ' (Attempt ' +
-                    attempt +
-                    '/' +
-                    MAX_RETRIES +
-                    ')'
-                );
-    
-                Logger.api(
-                    'Request URL: ' + url.toString()
-                );
-
-                Logger.api('Request URL: ' + url.toString());
-
-                const response = await fetch(url.toString(), {
-                    method: method,
-                    headers: options.headers,
-                    body: options.body,
-                    redirect: 'follow'
-                });
-                
-                Logger.api('HTTP Status: ' + response.status);
-                
-                Logger.api(
-                    'HTTP Status: ' + response.status
-                );
-    
-                clearTimeout(timeout);
-    
-                if (!response.ok) {
-    
-                    throw new Error(
-                        'HTTP ' +
-                        response.status
-                    );
-    
-                }
-                const text = await response.text();
-                
-                Logger.api(
-                    'Response: ' + text
-                );
-                
-                const result = JSON.parse(text);
-    
-                if (attempt > 1) {
-    
-                    Logger.success(
-                        'API request succeeded on retry.'
-                    );
-    
-                }
-    
-                return result;
-    
-            }
-
-            catch (error) {
-
-                clearTimeout(timeout);
-            
-                Logger.error(
-                    error.name + ': ' + error.message
-                );
-            
-                if (attempt === MAX_RETRIES) {
-            
-                    Logger.error(
-                        'API request failed after ' +
-                        MAX_RETRIES +
-                        ' attempts.'
-                    );
-            
-                    throw error;
-            
-                }
-            
-                Logger.warning(
-                    'API request failed. Retrying in ' +
-                    attempt +
-                    ' second(s)...'
-                );
-            
-                await delay(
-                    RETRY_DELAY * attempt
-                );
-            
-            }
-    
-        }
-    
+        return JSON.parse(text);
     }
 
   
