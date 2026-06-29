@@ -82,7 +82,8 @@ const Bluetooth = (() => {
             );
 
             if (mode === 'ble') {
-
+                
+                Parser.reset();
                 await BLE.connect(currentDevice);
 
             }
@@ -93,7 +94,7 @@ const Bluetooth = (() => {
             }
 
             connected = true;
-
+            
             AppCallbacks.onDeviceConnected(currentDevice);
 
         }
@@ -143,7 +144,8 @@ const Bluetooth = (() => {
             connected = false;
 
             currentDevice = null;
-
+            
+            Parser.reset();
             AppCallbacks.onDeviceDisconnected();
 
         }
