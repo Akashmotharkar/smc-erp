@@ -1,0 +1,1062 @@
+:root{
+
+    --primary:#1976d2;
+    --primary-dark:#0d47a1;
+
+    --success:#2e7d32;
+    --warning:#ef6c00;
+    --danger:#c62828;
+
+    --background:#f4f6f8;
+    --surface:#ffffff;
+
+    --text:#202124;
+    --text-light:#5f6368;
+
+    --border:#d7dce2;
+
+    --shadow:0 2px 10px rgba(0,0,0,.08);
+
+    --radius:12px;
+
+    --transition:.20s ease;
+
+    --header-height:64px;
+
+    font-family:
+        Roboto,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    height:100%;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+button,
+input,
+select{
+
+    font:inherit;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+}
+
+input{
+
+    outline:none;
+
+}
+
+select{
+
+    outline:none;
+
+}
+
+#app{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    padding:12px;
+
+}
+
+/*=========================================================
+HEADER
+=========================================================*/
+
+.app-header{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    min-height:var(--header-height);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:14px 18px;
+
+}
+
+.header-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.header-left h1{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.version-label{
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.status-badge{
+
+    min-width:120px;
+
+    text-align:center;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+.status-badge.connected{
+
+    background:var(--success);
+
+}
+
+.status-badge.disconnected{
+
+    background:var(--danger);
+
+}
+
+.status-badge.searching{
+
+    background:var(--warning);
+
+}
+
+/*=========================================================
+MAIN LAYOUT
+=========================================================*/
+
+.main-layout{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+}
+
+.card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:18px;
+
+}
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:14px;
+
+}
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.field label{
+
+    font-size:14px;
+
+    color:var(--text-light);
+
+    font-weight:600;
+
+}
+
+.field input{
+
+    width:100%;
+
+    height:46px;
+
+    padding:0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fff;
+
+}
+
+.field input:focus{
+
+    border-color:var(--primary);
+
+}
+
+/*=========================================================
+BUTTONS
+=========================================================*/
+
+.button-row{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.button-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin:18px 0;
+
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn{
+
+    height:46px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.primary-btn{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.secondary-btn{
+
+    background:#eceff1;
+
+    color:var(--text);
+
+}
+
+.secondary-btn:hover{
+
+    background:#dde3e7;
+
+}
+
+.danger-btn{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+.danger-btn:hover{
+
+    filter:brightness(.95);
+
+}
+
+button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+}
+
+/*=========================================================
+BLUETOOTH PANEL
+=========================================================*/
+
+.connection-type{
+
+    display:flex;
+
+    gap:22px;
+
+    margin-bottom:18px;
+
+}
+
+.radio-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+}
+
+.radio-item input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+.section-label{
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+}
+
+#deviceList{
+
+    width:100%;
+
+    height:180px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:8px;
+
+    background:#fff;
+
+    font-size:14px;
+
+}
+
+#deviceList option{
+
+    padding:8px;
+
+}
+
+#deviceList option:checked{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*=========================================================
+STATUS GRID
+=========================================================*/
+
+.status-grid{
+
+    margin-top:18px;
+
+    display:grid;
+
+    gap:8px;
+
+}
+
+.status-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:34px;
+
+    padding:0 10px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:#fafafa;
+
+}
+
+.status-row span:first-child{
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+}
+
+.status-row span:last-child{
+
+    font-weight:600;
+
+}
+
+/*=========================================================
+TOOLBAR
+=========================================================*/
+
+.toolbar{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:14px;
+
+}
+
+/*=========================================================
+RAW DATA PANEL
+=========================================================*/
+
+.raw-panel{
+
+    width:100%;
+
+    min-height:180px;
+    max-height:300px;
+
+    overflow:auto;
+
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#111827;
+
+    color:#00e676;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+}
+
+/*=========================================================
+LOG PANEL
+=========================================================*/
+
+.log-panel{
+
+    height:320px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fafafa;
+
+    padding:10px;
+
+}
+
+.log-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    padding:8px 10px;
+
+    margin-bottom:6px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    line-height:1.45;
+
+    word-break:break-word;
+
+}
+
+.log-time{
+
+    min-width:82px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+    flex-shrink:0;
+
+}
+
+.log-message{
+
+    flex:1;
+
+}
+
+/*=========================================================
+LOG COLORS
+=========================================================*/
+
+.log-info{
+
+    background:#e3f2fd;
+
+    color:#0d47a1;
+
+}
+
+.log-success{
+
+    background:#e8f5e9;
+
+    color:#1b5e20;
+
+}
+
+.log-warning{
+
+    background:#fff3e0;
+
+    color:#e65100;
+
+}
+
+.log-error{
+
+    background:#ffebee;
+
+    color:#b71c1c;
+
+}
+
+.log-parser{
+
+    background:#ede7f6;
+
+    color:#4527a0;
+
+}
+
+.log-receive{
+
+    background:#e0f7fa;
+
+    color:#006064;
+
+}
+
+.log-api{
+
+    background:#f3e5f5;
+
+    color:#6a1b9a;
+
+}
+
+/*=========================================================
+LOADING OVERLAY
+=========================================================*/
+
+.loading-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.loading-overlay.hidden{
+
+    display:none;
+
+}
+
+.loading-box{
+
+    min-width:220px;
+
+    padding:24px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.spinner{
+
+    width:42px;
+
+    height:42px;
+
+    border:4px solid #dfe3e8;
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .9s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*=========================================================
+SCROLLBAR
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eceff1;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#b0bec5;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#90a4ae;
+
+}
+
+/*=========================================================
+UTILITY CLASSES
+=========================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.text-success{
+
+    color:var(--success);
+
+}
+
+.text-warning{
+
+    color:var(--warning);
+
+}
+
+.text-danger{
+
+    color:var(--danger);
+
+}
+
+.text-primary{
+
+    color:var(--primary);
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.full-width{
+
+    width:100%;
+
+}
+
+/*=========================================================
+INPUT STATES
+=========================================================*/
+
+input[readonly]{
+
+    background:#f5f5f5;
+
+    color:#424242;
+
+}
+
+input:disabled,
+select:disabled,
+button:disabled{
+
+    opacity:.6;
+
+}
+
+/*=========================================================
+CARD SPACING
+=========================================================*/
+
+.form-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.bluetooth-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*=========================================================
+MOBILE
+=========================================================*/
+
+@media (max-width:900px){
+
+    #app{
+
+        padding:10px;
+
+        gap:12px;
+
+    }
+
+    .main-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .app-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .header-right{
+
+        width:100%;
+
+    }
+
+    .status-badge{
+
+        width:100%;
+
+    }
+
+    .button-row{
+
+        flex-direction:column;
+
+    }
+
+    .button-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #deviceList{
+
+        height:150px;
+
+    }
+
+    .log-panel{
+
+        height:260px;
+
+    }
+
+    .raw-panel{
+
+        min-height:140px;
+
+    }
+
+}
+
+/*=========================================================
+TABLET
+=========================================================*/
+
+@media (min-width:901px) and (max-width:1200px){
+
+    .main-layout{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:14px;
+
+    }
+
+    .card{
+
+        padding:16px;
+
+    }
+
+}
+
+/*=========================================================
+FOCUS STYLES
+=========================================================*/
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+
+    outline:3px solid rgba(25,118,210,.20);
+
+    outline-offset:2px;
+
+}
+
+/*=========================================================
+TOUCH IMPROVEMENTS
+=========================================================*/
+
+button{
+
+    touch-action:manipulation;
+
+    user-select:none;
+
+}
+
+select{
+
+    touch-action:manipulation;
+
+}
+
+input{
+
+    touch-action:manipulation;
+
+}
+
+/*=========================================================
+TEXT SELECTION
+=========================================================*/
+
+::selection{
+
+    background:rgba(25,118,210,.20);
+
+}
+
+/*=========================================================
+PRINT
+=========================================================*/
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+    }
+
+    .button-row,
+    .button-grid,
+    .toolbar{
+
+        display:none;
+
+    }
+
+    .card{
+
+        box-shadow:none;
+
+        border:1px solid #ccc;
+
+        break-inside:avoid;
+
+    }
+
+}
+
+/*=========================================================
+END OF FILE
+=========================================================*/
