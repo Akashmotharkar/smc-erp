@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="test()">Test API</button>
+
+<pre id="out"></pre>
+
+<script>
+async function test() {
+
+    try {
+
+        const res = await fetch(
+            'https://script.google.com/macros/s/AKfycbyw8N2mK5KukJhqIXCIAhKx2XoqDxfCO-3Y7QuyCi0w9bBw7GK1-cSimzdI84CUnoDb/exec?action=health'
+        );
+
+        document.getElementById('out').textContent =
+            await res.text();
+
+    }
+    catch (e) {
+
+        document.getElementById('out').textContent =
+            e.name + ': ' + e.message;
+
+    }
+
+}
+</script>
+
+</body>
+</html>
