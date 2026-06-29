@@ -66,28 +66,30 @@ const RETRY_DELAY = 1000;
             );
     
         }
-    
-        let url = baseUrl;
-    
+        
+        const url = new URL(baseUrl);
+        
         const options = {
-    
+        
             method,
-    
+        
             headers: {
-    
+        
                 'Content-Type': 'application/json'
-    
+        
             }
-    
+        
         };
-                if (method === 'GET') {
-            
-                url.searchParams.set(
-                    'action',
-                    action
-                );
-            
-            }
+        
+        if (method === 'GET') {
+        
+            url.searchParams.set(
+                'action',
+                action
+            );
+        
+        }
+    
         else {
     
             options.body = JSON.stringify({
