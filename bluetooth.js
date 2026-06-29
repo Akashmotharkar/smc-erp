@@ -262,7 +262,6 @@ const Bluetooth = (() => {
 
             UI.appendRawData('');
 
-            AppCallbacks.onRawDataReceived(ascii);
 
             Parser.parse({
 
@@ -293,10 +292,79 @@ const Bluetooth = (() => {
 
     }
 
+    /*=====================================================
+    CONNECTION STATE
+    =====================================================*/
 
+    function isConnected() {
 
+        return connected;
 
+    }
 
-  
+    function getCurrentDevice() {
 
-                   
+        return currentDevice;
+
+    }
+
+    function getMode() {
+
+        return mode;
+
+    }
+
+    /*=====================================================
+    CALLBACKS FROM PARSER
+    =====================================================*/
+
+    function parserSuccess(result) {
+
+        Logger.parser('Parser completed successfully.');
+
+        AppCallbacks.onParsedData(result);
+
+    }
+
+    function parserFailed(reason) {
+
+        Logger.warning(
+            'Parser failed: ' +
+            (reason || 'Unknown format')
+        );
+
+    }
+
+    /*=====================================================
+    PUBLIC API
+    =====================================================*/
+
+    return {
+
+        search,
+
+        connect,
+
+        disconnect,
+
+        deviceFound,
+
+        packetReceived,
+
+        parserSuccess,
+
+        parserFailed,
+
+        isConnected,
+
+        getCurrentDevice,
+
+        getMode
+
+    };
+
+})();
+
+/*=========================================================
+END OF FILE
+=========================================================*/                   
