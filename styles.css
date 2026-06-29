@@ -1,1952 +1,123 @@
-/* ==========================================================
-   SHREE KRUSHNAA MILK COLLECTION SYSTEM
-   Global Design System
-   Version : 2.0
-========================================================== */
-
-
-/* ==========================================================
-   ROOT VARIABLES
-========================================================== */
-
 :root{
 
-  /* Brand */
+    --primary:#1976d2;
+    --primary-dark:#0d47a1;
 
-  --primary:#1976d2;
-  --primary-dark:#1565c0;
-  --primary-light:#42a5f5;
+    --success:#2e7d32;
+    --warning:#ef6c00;
+    --danger:#c62828;
 
-  /* Status */
+    --background:#f4f6f8;
+    --surface:#ffffff;
 
-  --success:#2e7d32;
-  --warning:#ed6c02;
-  --danger:#d32f2f;
+    --text:#202124;
+    --text-light:#5f6368;
 
-  /* Background */
+    --border:#d7dce2;
 
-  --background:#f5f7fa;
-  --surface:#ffffff;
-  --surface-2:#fafafa;
+    --shadow:0 2px 10px rgba(0,0,0,.08);
 
-  /* Text */
+    --radius:12px;
 
-  --text:#212121;
-  --text-light:#616161;
-  --text-muted:#9e9e9e;
+    --transition:.20s ease;
 
-  /* Borders */
+    --header-height:64px;
 
-  --border:#dcdcdc;
-  --divider:#ececec;
-
-  /* Register */
-
-  --highlight:#fff9c4;
-  --selected:#e3f2fd;
-  --selected-border:#1976d2;
-
-  /* Shadows */
-
-  --shadow-sm:
-      0 1px 3px rgba(0,0,0,.10);
-
-  --shadow-md:
-      0 3px 10px rgba(0,0,0,.14);
-
-  --shadow-lg:
-      0 8px 20px rgba(0,0,0,.18);
-
-  /* Radius */
-
-  --radius-sm:6px;
-  --radius-md:10px;
-  --radius-lg:16px;
-
-  /* Header */
-
-  --header-height:60px;
-
-  /* Footer */
-
-  --footer-height:48px;
-
-  /* Entry Panel */
-
-  --panel-width:260px;
-
-  /* Animation */
-
-  --transition:.18s ease;
+    font-family:
+        Roboto,
+        Arial,
+        Helvetica,
+        sans-serif;
 
 }
-
-
-/* ==========================================================
-   RESET
-========================================================== */
 
 *{
 
-  margin:0;
+    margin:0;
 
-  padding:0;
+    padding:0;
 
-  box-sizing:border-box;
+    box-sizing:border-box;
 
 }
-
-
-/* ==========================================================
-   HTML
-========================================================== */
 
 html{
 
-  width:100%;
-
-  height:100%;
+    height:100%;
 
 }
-
-
-/* ==========================================================
-   BODY
-========================================================== */
 
 body{
 
-  width:100%;
+    min-height:100vh;
 
-  height:100vh;
+    background:var(--background);
 
-  overflow:hidden;
+    color:var(--text);
 
-  background:var(--background);
+    overflow-x:hidden;
 
-  color:var(--text);
-
-  font-family:
-
-    Roboto,
-
-    Arial,
-
-    sans-serif;
-
-  font-size:14px;
+    -webkit-tap-highlight-color:transparent;
 
 }
 
+button,
+input,
+select{
 
-/* ==========================================================
-   IMAGES
-========================================================== */
-
-img{
-
-  max-width:100%;
-
-  display:block;
+    font:inherit;
 
 }
-
-
-/* ==========================================================
-   LINKS
-========================================================== */
-
-a{
-
-  color:inherit;
-
-  text-decoration:none;
-
-}
-
-
-/* ==========================================================
-   BUTTON RESET
-========================================================== */
 
 button{
 
-  font-family:inherit;
+    cursor:pointer;
 
-  border:none;
-
-  outline:none;
-
-  cursor:pointer;
+    border:none;
 
 }
 
+input{
 
-/* ==========================================================
-   INPUT RESET
-========================================================== */
-
-input,
-select,
-textarea{
-
-  font-family:inherit;
-
-  outline:none;
+    outline:none;
 
 }
 
+select{
 
-/* ==========================================================
-   LISTS
-========================================================== */
-
-ul,
-ol{
-
-  list-style:none;
+    outline:none;
 
 }
-
-/* ==========================================================
-   APPLICATION LAYOUT
-========================================================== */
 
 #app{
 
-  display:grid;
+    width:100%;
 
-  grid-template-rows:
+    min-height:100vh;
 
-    var(--header-height)
+    display:flex;
 
-    1fr
+    flex-direction:column;
 
-    var(--footer-height);
+    gap:16px;
 
-  width:100%;
-
-  height:100vh;
+    padding:12px;
 
 }
 
-
-/* ==========================================================
-   HEADER
-========================================================== */
+/*=========================================================
+HEADER
+=========================================================*/
 
 .app-header{
 
-  display:flex;
+    background:var(--surface);
 
-  align-items:center;
+    border-radius:var(--radius);
 
-  justify-content:space-between;
+    box-shadow:var(--shadow);
 
-  gap:16px;
-
-  padding:0 14px;
-
-  background:var(--surface);
-
-  border-bottom:1px solid var(--border);
-
-  box-shadow:var(--shadow-sm);
-
-  z-index:100;
-
-}
-
-
-.header-left{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-
-.header-center{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:18px;
-
-  margin-left:auto;
-
-  margin-right:auto;
-
-}
-
-
-.header-right{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-
-.app-title{
-
-  font-size:20px;
-
-  font-weight:700;
-
-  color:var(--primary);
-
-  white-space:nowrap;
-
-}
-
-
-.header-chip{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  padding:6px 10px;
-
-  background:var(--surface-2);
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  font-size:13px;
-
-  white-space:nowrap;
-
-}
-
-
-/* ==========================================================
-   MAIN AREA
-========================================================== */
-
-.main-layout{
-
-  display:grid;
-
-  grid-template-columns:
-
-    var(--panel-width)
-
-    1fr;
-
-  overflow:hidden;
-
-}
-
-
-/* ==========================================================
-   ENTRY PANEL
-========================================================== */
-
-.entry-panel{
-
-  display:flex;
-
-  flex-direction:column;
-
-  background:var(--surface);
-
-  border-right:1px solid var(--border);
-
-  box-shadow:var(--shadow-sm);
-
-  overflow:hidden;
-
-}
-
-
-.entry-panel-header{
-
-  padding:12px;
-
-  border-bottom:1px solid var(--divider);
-
-  font-size:17px;
-
-  font-weight:700;
-
-}
-
-
-.entry-panel-body{
-
-  flex:1;
-
-  overflow-y:auto;
-
-  padding:12px;
-
-}
-
-
-.entry-panel-footer{
-
-  padding:10px;
-
-  border-top:1px solid var(--divider);
-
-}
-
-
-/* ==========================================================
-   REGISTER AREA
-========================================================== */
-
-.register-area{
-
-  display:flex;
-
-  flex-direction:column;
-
-  overflow:hidden;
-
-  background:var(--background);
-
-}
-
-
-/* ==========================================================
-   REGISTER HEADER
-========================================================== */
-
-.register-header{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:12px;
-
-  padding:10px 14px;
-
-  background:var(--surface);
-
-  border-bottom:1px solid var(--border);
-
-}
-
-
-.register-title{
-
-  font-size:17px;
-
-  font-weight:700;
-
-}
-
-
-.register-cycle{
-
-  color:var(--text-light);
-
-  font-size:13px;
-
-}
-
-
-/* ==========================================================
-   REGISTER CONTENT
-========================================================== */
-
-.register-content{
-
-  flex:1;
-
-  overflow:auto;
-
-}
-
-
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-.app-footer{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-around;
-
-  background:var(--surface);
-
-  border-top:1px solid var(--border);
-
-  box-shadow:0 -1px 4px rgba(0,0,0,.08);
-
-}
-
-
-.footer-item{
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:2px;
-
-  min-width:70px;
-
-}
-
-
-.footer-label{
-
-  font-size:11px;
-
-  color:var(--text-light);
-
-}
-
-
-.footer-value{
-
-  font-size:14px;
-
-  font-weight:700;
-
-}
-
-/* ==========================================================
-   FORM
-========================================================== */
-
-.form-group{
-
-  display:flex;
-
-  flex-direction:column;
-
-  margin-bottom:12px;
-
-}
-
-
-.form-row{
-
-  display:flex;
-
-  gap:8px;
-
-}
-
-
-.form-row .form-group{
-
-  flex:1;
-
-}
-
-
-.form-label{
-
-  font-size:12px;
-
-  font-weight:600;
-
-  color:var(--text-light);
-
-  margin-bottom:4px;
-
-}
-
-
-/* ==========================================================
-   INPUTS
-========================================================== */
-
-.form-control{
-
-  width:100%;
-
-  height:38px;
-
-  padding:0 10px;
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius-sm);
-
-  background:#fff;
-
-  font-size:14px;
-
-  color:var(--text);
-
-  transition:var(--transition);
-
-}
-
-
-.form-control:focus{
-
-  border-color:var(--primary);
-
-  box-shadow:0 0 0 2px rgba(25,118,210,.12);
-
-}
-
-
-.form-control[readonly]{
-
-  background:#f7f7f7;
-
-  color:var(--text-light);
-
-}
-
-
-/* ==========================================================
-   CUSTOMER NAME
-========================================================== */
-
-.customer-name{
-
-  font-size:15px;
-
-  font-weight:700;
-
-  color:var(--primary);
-
-}
-
-
-/* ==========================================================
-   TAB BAR
-========================================================== */
-
-.tab-bar{
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:4px;
-
-  margin:14px 0;
-
-}
-
-
-.tab-button{
-
-  height:36px;
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius-sm);
-
-  background:#fff;
-
-  color:var(--text-light);
-
-  font-size:13px;
-
-  font-weight:600;
-
-  transition:var(--transition);
-
-}
-
-
-.tab-button:hover{
-
-  background:#f3f8ff;
-
-}
-
-
-.tab-button.active{
-
-  background:var(--primary);
-
-  color:#fff;
-
-  border-color:var(--primary);
-
-}
-
-
-/* ==========================================================
-   ENTRY TAB
-========================================================== */
-
-.entry-tab{
-
-  display:none;
-
-}
-
-
-.entry-tab.active{
-
-  display:block;
-
-}
-
-
-/* ==========================================================
-   SAVE BUTTON
-========================================================== */
-
-.btn-save{
-
-  width:100%;
-
-  height:46px;
-
-  margin-top:10px;
-
-  border-radius:var(--radius-md);
-
-  background:var(--primary);
-
-  color:#fff;
-
-  font-size:16px;
-
-  font-weight:700;
-
-  transition:var(--transition);
-
-}
-
-
-.btn-save:hover{
-
-  background:var(--primary-dark);
-
-}
-
-
-.btn-save:active{
-
-  transform:scale(.98);
-
-}
-
-
-.btn-save.success{
-
-  background:var(--success);
-
-}
-
-
-/* ==========================================================
-   SMALL BUTTONS
-========================================================== */
-
-.btn{
-
-  height:36px;
-
-  padding:0 14px;
-
-  border-radius:var(--radius-sm);
-
-  background:var(--primary);
-
-  color:#fff;
-
-  font-weight:600;
-
-}
-
-
-.btn.secondary{
-
-  background:#eeeeee;
-
-  color:var(--text);
-
-}
-
-
-.btn.danger{
-
-  background:var(--danger);
-
-}
-
-
-/* ==========================================================
-   DIVIDER
-========================================================== */
-
-.divider{
-
-  height:1px;
-
-  margin:12px 0;
-
-  background:var(--divider);
-
-}
-
-
-/* ==========================================================
-   BADGES
-========================================================== */
-
-.badge{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  min-width:22px;
-
-  height:22px;
-
-  padding:0 8px;
-
-  border-radius:20px;
-
-  background:var(--primary);
-
-  color:#fff;
-
-  font-size:11px;
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   HELP TEXT
-========================================================== */
-
-.helper-text{
-
-  margin-top:4px;
-
-  font-size:11px;
-
-  color:var(--text-muted);
-
-}
-
-/* ==========================================================
-   REGISTER
-========================================================== */
-
-.register{
-
-  flex:1;
-
-  overflow:auto;
-
-  background:var(--background);
-
-  padding:8px;
-
-}
-
-
-/* ==========================================================
-   CUSTOMER ROW
-========================================================== */
-
-.customer-row{
-
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:6px;
-
-  width:max-content;
-
-  min-width:100%;
-
-}
-
-
-/* ==========================================================
-   CUSTOMER COLUMN
-========================================================== */
-
-.customer-column{
-
-  display:flex;
-
-  flex-direction:column;
-
-  flex:0 0 240px;
-
-  width:240px;
-
-  min-width:240px;
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius-md);
-
-  overflow:hidden;
-
-  transition:var(--transition);
-
-}
-
-
-.customer-column:hover{
-
-  box-shadow:var(--shadow-md);
-
-}
-
-
-/* ==========================================================
-   SELECTED CUSTOMER
-========================================================== */
-
-.customer-column.selected{
-
-  border:2px solid var(--selected-border);
-
-  background:var(--selected);
-
-}
-
-
-/* ==========================================================
-   CUSTOMER HEADER
-========================================================== */
-
-.customer-header{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:5;
-
-  background:#ffffff;
-
-  border-bottom:1px solid var(--divider);
-
-  padding:8px;
-
-}
-
-
-.customer-id{
-
-  font-size:12px;
-
-  color:var(--text-light);
-
-}
-
-
-.customer-title{
-
-  font-size:17px;
-
-  font-weight:700;
-
-  color:var(--primary);
-
-  margin-top:2px;
-
-}
-
-
-.customer-subtitle{
-
-  font-size:12px;
-
-  color:var(--text-light);
-
-}
-
-
-/* ==========================================================
-   REGISTER TABLE
-========================================================== */
-
-.register-table{
-
-  width:100%;
-
-  border-collapse:collapse;
-
-}
-
-
-.register-table th{
-
-  position:sticky;
-
-  top:64px;
-
-  z-index:4;
-
-  background:#f8f8f8;
-
-}
-
-
-.register-table th,
-
-.register-table td{
-
-  border:1px solid var(--divider);
-
-  padding:4px 6px;
-
-  text-align:center;
-
-  font-size:12px;
-
-  white-space:nowrap;
-
-}
-
-
-.register-table td{
-
-  height:28px;
-
-}
-
-
-/* ==========================================================
-   ROW TITLE
-========================================================== */
-
-.row-title{
-
-  text-align:left !important;
-
-  font-weight:600;
-
-  background:#fafafa;
-
-}
-
-
-/* ==========================================================
-   SELECTED DATE
-========================================================== */
-
-.selected-date{
-
-  background:var(--highlight) !important;
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   TODAY
-========================================================== */
-
-.today{
-
-  color:var(--primary);
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   TOTAL ROW
-========================================================== */
-
-.total-row{
-
-  background:#f5f5f5;
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   BALANCE ROW
-========================================================== */
-
-.balance-row{
-
-  background:#eef7ff;
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   MISSING ENTRY
-========================================================== */
-
-.missing-entry{
-
-  background:#fff9c4;
-
-}
-
-
-/* ==========================================================
-   POSITIVE / NEGATIVE
-========================================================== */
-
-.positive{
-
-  color:var(--success);
-
-  font-weight:700;
-
-}
-
-
-.negative{
-
-  color:var(--danger);
-
-  font-weight:700;
-
-}
-
-
-/* ==========================================================
-   ACTIVE CELL
-========================================================== */
-
-.active-cell{
-
-  outline:2px solid var(--primary);
-
-  outline-offset:-2px;
-
-}
-
-
-/* ==========================================================
-   SCROLLBAR
-========================================================== */
-
-.register::-webkit-scrollbar{
-
-  width:10px;
-
-  height:10px;
-
-}
-
-
-.register::-webkit-scrollbar-track{
-
-  background:#eeeeee;
-
-}
-
-
-.register::-webkit-scrollbar-thumb{
-
-  background:#bdbdbd;
-
-  border-radius:20px;
-
-}
-
-
-.register::-webkit-scrollbar-thumb:hover{
-
-  background:#9e9e9e;
-
-}
-
-/* ==========================================================
-   DIALOG
-========================================================== */
-
-.dialog-overlay{
-
-  position:fixed;
-
-  inset:0;
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:rgba(0,0,0,.35);
-
-  z-index:9000;
-
-}
-
-
-.dialog-overlay.show{
-
-  display:flex;
-
-}
-
-
-.dialog{
-
-  display:flex;
-
-  flex-direction:column;
-
-  width:min(900px,95vw);
-
-  max-height:90vh;
-
-  background:var(--surface);
-
-  border-radius:var(--radius-lg);
-
-  box-shadow:var(--shadow-lg);
-
-  overflow:hidden;
-
-}
-
-
-.dialog-header{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:14px 18px;
-
-  border-bottom:1px solid var(--divider);
-
-  font-size:18px;
-
-  font-weight:700;
-
-}
-
-
-.dialog-body{
-
-  flex:1;
-
-  overflow:auto;
-
-  padding:16px;
-
-}
-
-
-.dialog-footer{
-
-  display:flex;
-
-  justify-content:flex-end;
-
-  gap:10px;
-
-  padding:12px 16px;
-
-  border-top:1px solid var(--divider);
-
-}
-
-
-/* ==========================================================
-   DRAWER
-========================================================== */
-
-.drawer{
-
-  position:fixed;
-
-  top:0;
-
-  right:-340px;
-
-  width:320px;
-
-  height:100%;
-
-  display:flex;
-
-  flex-direction:column;
-
-  background:var(--surface);
-
-  box-shadow:var(--shadow-lg);
-
-  transition:right .25s ease;
-
-  z-index:8000;
-
-}
-
-
-.drawer.open{
-
-  right:0;
-
-}
-
-
-.drawer-header{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:14px;
-
-  border-bottom:1px solid var(--divider);
-
-  font-size:17px;
-
-  font-weight:700;
-
-}
-
-
-.drawer-body{
-
-  flex:1;
-
-  overflow:auto;
-
-  padding:14px;
-
-}
-
-
-/* ==========================================================
-   SNACKBAR
-========================================================== */
-
-.snackbar{
-
-  position:fixed;
-
-  left:50%;
-
-  bottom:24px;
-
-  transform:translateX(-50%);
-
-  min-width:240px;
-
-  max-width:90vw;
-
-  padding:12px 20px;
-
-  border-radius:24px;
-
-  background:#323232;
-
-  color:#fff;
-
-  text-align:center;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transition:all .25s ease;
-
-  z-index:9500;
-
-}
-
-
-.snackbar.show{
-
-  opacity:1;
-
-  bottom:36px;
-
-}
-
-
-.snackbar.success{
-
-  background:var(--success);
-
-}
-
-
-.snackbar.error{
-
-  background:var(--danger);
-
-}
-
-
-.snackbar.warning{
-
-  background:var(--warning);
-
-}
-
-
-/* ==========================================================
-   LOADER
-========================================================== */
-
-.loader-overlay{
-
-  position:fixed;
-
-  inset:0;
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:rgba(255,255,255,.7);
-
-  backdrop-filter:blur(2px);
-
-  z-index:10000;
-
-}
-
-
-.loader-overlay.show{
-
-  display:flex;
-
-}
-
-
-.loader-box{
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  gap:16px;
-
-  padding:24px;
-
-  border-radius:var(--radius-lg);
-
-  background:#fff;
-
-  box-shadow:var(--shadow-lg);
-
-}
-
-
-.loader-spinner{
-
-  width:52px;
-
-  height:52px;
-
-  border:5px solid #eeeeee;
-
-  border-top:5px solid var(--primary);
-
-  border-radius:50%;
-
-  animation:spin 1s linear infinite;
-
-}
-
-
-@keyframes spin{
-
-  to{
-
-    transform:rotate(360deg);
-
-  }
-
-}
-
-
-/* ==========================================================
-   STATUS CHIP
-========================================================== */
-
-.status-chip{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  padding:5px 10px;
-
-  border-radius:20px;
-
-  font-size:12px;
-
-  font-weight:600;
-
-}
-
-
-.status-online{
-
-  background:#e8f5e9;
-
-  color:var(--success);
-
-}
-
-
-.status-offline{
-
-  background:#ffebee;
-
-  color:var(--danger);
-
-}
-
-
-.status-warning{
-
-  background:#fff3e0;
-
-  color:var(--warning);
-
-}
-
-
-/* ==========================================================
-   BLUETOOTH BUTTON
-========================================================== */
-
-.bluetooth-btn{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:6px;
-
-  height:38px;
-
-  padding:0 14px;
-
-  border-radius:20px;
-
-  background:#ffffff;
-
-  border:1px solid var(--border);
-
-  font-weight:600;
-
-}
-
-
-.bluetooth-btn.connected{
-
-  color:var(--success);
-
-}
-
-
-.bluetooth-btn.disconnected{
-
-  color:var(--danger);
-
-}
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-/* ---------- Large Desktop ---------- */
-
-@media (min-width:1600px){
-
-  :root{
-
-    --panel-width:280px;
-
-  }
-
-}
-
-
-/* ---------- Laptop ---------- */
-
-@media (max-width:1366px){
-
-  :root{
-
-    --panel-width:240px;
-
-  }
-
-}
-
-
-/* ---------- Tablet ---------- */
-
-@media (max-width:1024px){
-
-  :root{
-
-    --panel-width:220px;
-
-  }
-
-  .app-title{
-
-    font-size:18px;
-
-  }
-
-  .customer-column{
-
-    width:220px;
-
-    min-width:220px;
-
-    flex-basis:220px;
-
-  }
-
-}
-
-
-/* ---------- Mobile Landscape ---------- */
-
-@media (max-width:900px) and (orientation:landscape){
-
-  :root{
-
-    --panel-width:210px;
-
-  }
-
-  .app-title{
-
-    font-size:17px;
-
-  }
-
-  .header-chip{
-
-    font-size:12px;
-
-    padding:5px 8px;
-
-  }
-
-  .customer-column{
-
-    width:200px;
-
-    min-width:200px;
-
-    flex-basis:200px;
-
-  }
-
-}
-
-
-/* ---------- Mobile Portrait ---------- */
-
-@media (max-width:768px){
-
-  .main-layout{
-
-    grid-template-columns:1fr;
-
-  }
-
-  .entry-panel{
-
-    height:340px;
-
-    border-right:none;
-
-    border-bottom:1px solid var(--border);
-
-  }
-
-  .register-header{
-
-    padding:8px;
-
-  }
-
-  .customer-column{
-
-    width:190px;
-
-    min-width:190px;
-
-    flex-basis:190px;
-
-  }
-
-}
-
-
-/* ---------- Small Phones ---------- */
-
-@media (max-width:480px){
-
-  body{
-
-    font-size:13px;
-
-  }
-
-  .app-title{
-
-    font-size:15px;
-
-  }
-
-  .header-chip{
-
-    display:none;
-
-  }
-
-  .customer-column{
-
-    width:170px;
-
-    min-width:170px;
-
-    flex-basis:170px;
-
-  }
-
-  .form-control{
-
-    height:34px;
-
-    font-size:13px;
-
-  }
-
-  .btn-save{
-
-    height:42px;
-
-    font-size:15px;
-
-  }
-
-}
-
-
-/* ==========================================================
-   UTILITIES
-========================================================== */
-
-.hidden{
-
-  display:none !important;
-
-}
-
-.flex{
-
-  display:flex;
-
-}
-
-.grid{
-
-  display:grid;
-
-}
-
-.center{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-}
-
-.w-100{
-
-  width:100%;
-
-}
-
-.h-100{
-
-  height:100%;
-
-}
-
-.text-center{
-
-  text-align:center;
-
-}
-
-.text-right{
-
-  text-align:right;
-
-}
-
-.mt-8{
-
-  margin-top:8px;
-
-}
-
-.mt-12{
-
-  margin-top:12px;
-
-}
-
-.mb-8{
-
-  margin-bottom:8px;
-
-}
-
-.mb-12{
-
-  margin-bottom:12px;
-
-}
-
-
-/* ==========================================================
-   PRINT
-========================================================== */
-
-@media print{
-
-  body{
-
-    background:#ffffff;
-
-  }
-
-  .entry-panel,
-
-  .app-header,
-
-  .app-footer,
-
-  .drawer,
-
-  .dialog,
-
-  .snackbar,
-
-  .loader-overlay{
-
-    display:none !important;
-
-  }
-
-  .register-area{
-
-    width:100%;
-
-    overflow:visible;
-
-  }
-
-}
-
-
-/* ==========================================================
-   ACCESSIBILITY
-========================================================== */
-
-:focus-visible{
-
-  outline:2px solid var(--primary);
-
-  outline-offset:2px;
-
-}
-
-
-/* ==========================================================
-   DISABLE TEXT SELECTION
-========================================================== */
-
-button,
-
-.tab-button,
-
-.register-table th{
-
-  user-select:none;
-
-  -webkit-user-select:none;
-
-}
-
-
-/* ==========================================================
-   SMOOTH SCROLL
-========================================================== */
-
-html{
-
-  scroll-behavior:smooth;
-
-}
-
-/* ==========================================================
-   PAGE TITLE BAR
-========================================================== */
-
-.page-toolbar{
+    min-height:var(--header-height);
 
     display:flex;
 
@@ -1954,163 +125,599 @@ html{
 
     justify-content:space-between;
 
-    gap:12px;
-
-    padding:10px 14px;
-
-    background:var(--surface);
-
-    border-bottom:1px solid var(--border);
+    padding:14px 18px;
 
 }
 
-.toolbar-left,
-.toolbar-center,
-.toolbar-right{
+.header-left{
 
     display:flex;
 
-    align-items:center;
+    flex-direction:column;
 
-    gap:10px;
+    gap:4px;
 
 }
 
-.toolbar-title{
+.header-left h1{
 
-    font-size:18px;
+    font-size:22px;
 
     font-weight:700;
 
 }
 
-.toolbar-subtitle{
-
-    font-size:12px;
+.version-label{
 
     color:var(--text-light);
 
+    font-size:13px;
+
 }
 
-
-/* ==========================================================
-   ICON BUTTON
-========================================================== */
-
-.icon-btn{
+.header-right{
 
     display:flex;
 
     align-items:center;
 
-    justify-content:center;
+}
 
-    width:38px;
+.status-badge{
 
-    height:38px;
+    min-width:120px;
 
-    border-radius:50%;
+    text-align:center;
 
-    background:transparent;
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+.status-badge.connected{
+
+    background:var(--success);
+
+}
+
+.status-badge.disconnected{
+
+    background:var(--danger);
+
+}
+
+.status-badge.searching{
+
+    background:var(--warning);
+
+}
+
+/*=========================================================
+MAIN LAYOUT
+=========================================================*/
+
+.main-layout{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+}
+
+.card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:18px;
+
+}
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:14px;
+
+}
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.field label{
+
+    font-size:14px;
+
+    color:var(--text-light);
+
+    font-weight:600;
+
+}
+
+.field input{
+
+    width:100%;
+
+    height:46px;
+
+    padding:0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fff;
+
+}
+
+.field input:focus{
+
+    border-color:var(--primary);
+
+}
+
+/*=========================================================
+BUTTONS
+=========================================================*/
+
+.button-row{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.button-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin:18px 0;
+
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn{
+
+    height:46px;
+
+    border-radius:10px;
+
+    font-weight:600;
 
     transition:var(--transition);
 
 }
 
-.icon-btn:hover{
+.primary-btn{
 
-    background:#eceff1;
+    background:var(--primary);
+
+    color:#fff;
 
 }
 
+.primary-btn:hover{
 
-/* ==========================================================
-   SEARCH BOX
-========================================================== */
+    background:var(--primary-dark);
 
-.search-box{
+}
 
-    width:220px;
+.secondary-btn{
 
-    height:38px;
+    background:#eceff1;
+
+    color:var(--text);
+
+}
+
+.secondary-btn:hover{
+
+    background:#dde3e7;
+
+}
+
+.danger-btn{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+.danger-btn:hover{
+
+    filter:brightness(.95);
+
+}
+
+button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+}
+
+/*=========================================================
+BLUETOOTH PANEL
+=========================================================*/
+
+.connection-type{
+
+    display:flex;
+
+    gap:22px;
+
+    margin-bottom:18px;
+
+}
+
+.radio-item{
 
     display:flex;
 
     align-items:center;
 
-    padding:0 10px;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
     gap:8px;
+
+    font-size:15px;
 
 }
 
-.search-box input{
+.radio-item input{
 
-    flex:1;
+    width:18px;
 
-    border:none;
+    height:18px;
 
-    background:transparent;
+}
+
+.section-label{
+
+    margin-top:18px;
+
+    margin-bottom:8px;
 
     font-size:14px;
 
-}
-
-
-/* ==========================================================
-   SUMMARY CARD
-========================================================== */
-
-.summary-card{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:4px;
-
-    min-width:110px;
-
-    padding:10px;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:var(--radius-md);
-
-}
-
-.summary-title{
-
-    font-size:11px;
+    font-weight:600;
 
     color:var(--text-light);
 
 }
 
-.summary-value{
+#deviceList{
 
-    font-size:18px;
+    width:100%;
 
-    font-weight:700;
+    height:180px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:8px;
+
+    background:#fff;
+
+    font-size:14px;
 
 }
 
+#deviceList option{
 
-/* ==========================================================
-   EMPTY STATE
-========================================================== */
+    padding:8px;
 
-.empty-state{
+}
+
+#deviceList option:checked{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*=========================================================
+STATUS GRID
+=========================================================*/
+
+.status-grid{
+
+    margin-top:18px;
+
+    display:grid;
+
+    gap:8px;
+
+}
+
+.status-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:34px;
+
+    padding:0 10px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:#fafafa;
+
+}
+
+.status-row span:first-child{
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+}
+
+.status-row span:last-child{
+
+    font-weight:600;
+
+}
+
+/*=========================================================
+TOOLBAR
+=========================================================*/
+
+.toolbar{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:14px;
+
+}
+
+/*=========================================================
+RAW DATA PANEL
+=========================================================*/
+
+.raw-panel{
+
+    width:100%;
+
+    min-height:180px;
+    max-height:300px;
+
+    overflow:auto;
+
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#111827;
+
+    color:#00e676;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+}
+
+/*=========================================================
+LOG PANEL
+=========================================================*/
+
+.log-panel{
+
+    height:320px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fafafa;
+
+    padding:10px;
+
+}
+
+.log-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    padding:8px 10px;
+
+    margin-bottom:6px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    line-height:1.45;
+
+    word-break:break-word;
+
+}
+
+.log-time{
+
+    min-width:82px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+    flex-shrink:0;
+
+}
+
+.log-message{
+
+    flex:1;
+
+}
+
+/*=========================================================
+LOG COLORS
+=========================================================*/
+
+.log-info{
+
+    background:#e3f2fd;
+
+    color:#0d47a1;
+
+}
+
+.log-success{
+
+    background:#e8f5e9;
+
+    color:#1b5e20;
+
+}
+
+.log-warning{
+
+    background:#fff3e0;
+
+    color:#e65100;
+
+}
+
+.log-error{
+
+    background:#ffebee;
+
+    color:#b71c1c;
+
+}
+
+.log-parser{
+
+    background:#ede7f6;
+
+    color:#4527a0;
+
+}
+
+.log-receive{
+
+    background:#e0f7fa;
+
+    color:#006064;
+
+}
+
+.log-api{
+
+    background:#f3e5f5;
+
+    color:#6a1b9a;
+
+}
+
+/*=========================================================
+LOADING OVERLAY
+=========================================================*/
+
+.loading-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.loading-overlay.hidden{
+
+    display:none;
+
+}
+
+.loading-box{
+
+    min-width:220px;
+
+    padding:24px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    box-shadow:var(--shadow);
 
     display:flex;
 
@@ -2118,59 +725,338 @@ html{
 
     align-items:center;
 
-    justify-content:center;
-
-    gap:10px;
-
-    color:var(--text-muted);
-
-    height:100%;
+    gap:16px;
 
 }
 
+.spinner{
 
-/* ==========================================================
-   FADE
-========================================================== */
+    width:42px;
 
-.fade-in{
+    height:42px;
 
-    animation:fadeIn .2s ease;
+    border:4px solid #dfe3e8;
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .9s linear infinite;
 
 }
 
-@keyframes fadeIn{
+@keyframes spin{
 
     from{
 
-        opacity:0;
+        transform:rotate(0deg);
 
     }
 
     to{
 
-        opacity:1;
+        transform:rotate(360deg);
 
     }
 
 }
 
-/* ==========================================================
-   DESIGN NOTES
+/*=========================================================
+SCROLLBAR
+=========================================================*/
 
-   • Primary Layout : CSS Grid
-   • Fixed Entry Panel
-   • Scrollable Register
-   • Mobile First
-   • Landscape Optimized
-   • Material Inspired
-   • No Fixed Position Layout
-   • Reusable Components
+::-webkit-scrollbar{
 
-========================================================== */
+    width:10px;
 
+    height:10px;
 
-/* ==========================================================
-   END OF STYLES
-========================================================== */
+}
 
+::-webkit-scrollbar-track{
+
+    background:#eceff1;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#b0bec5;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#90a4ae;
+
+}
+
+/*=========================================================
+UTILITY CLASSES
+=========================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.text-success{
+
+    color:var(--success);
+
+}
+
+.text-warning{
+
+    color:var(--warning);
+
+}
+
+.text-danger{
+
+    color:var(--danger);
+
+}
+
+.text-primary{
+
+    color:var(--primary);
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.full-width{
+
+    width:100%;
+
+}
+
+/*=========================================================
+INPUT STATES
+=========================================================*/
+
+input[readonly]{
+
+    background:#f5f5f5;
+
+    color:#424242;
+
+}
+
+input:disabled,
+select:disabled,
+button:disabled{
+
+    opacity:.6;
+
+}
+
+/*=========================================================
+CARD SPACING
+=========================================================*/
+
+.form-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.bluetooth-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*=========================================================
+MOBILE
+=========================================================*/
+
+@media (max-width:900px){
+
+    #app{
+
+        padding:10px;
+
+        gap:12px;
+
+    }
+
+    .main-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .app-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .header-right{
+
+        width:100%;
+
+    }
+
+    .status-badge{
+
+        width:100%;
+
+    }
+
+    .button-row{
+
+        flex-direction:column;
+
+    }
+
+    .button-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #deviceList{
+
+        height:150px;
+
+    }
+
+    .log-panel{
+
+        height:260px;
+
+    }
+
+    .raw-panel{
+
+        min-height:140px;
+
+    }
+
+}
+
+/*=========================================================
+TABLET
+=========================================================*/
+
+@media (min-width:901px) and (max-width:1200px){
+
+    .main-layout{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:14px;
+
+    }
+
+    .card{
+
+        padding:16px;
+
+    }
+
+}
+
+/*=========================================================
+FOCUS STYLES
+=========================================================*/
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+
+    outline:3px solid rgba(25,118,210,.20);
+
+    outline-offset:2px;
+
+}
+
+/*=========================================================
+TOUCH IMPROVEMENTS
+=========================================================*/
+
+button{
+
+    touch-action:manipulation;
+
+    user-select:none;
+
+}
+
+select{
+
+    touch-action:manipulation;
+
+}
+
+input{
+
+    touch-action:manipulation;
+
+}
+
+/*=========================================================
+TEXT SELECTION
+=========================================================*/
+
+::selection{
+
+    background:rgba(25,118,210,.20);
+
+}
+
+/*=========================================================
+PRINT
+=========================================================*/
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+    }
+
+    .button-row,
+    .button-grid,
+    .toolbar{
+
+        display:none;
+
+    }
+
+    .card{
+
+        box-shadow:none;
+
+        border:1px solid #ccc;
+
+        break-inside:avoid;
+
+    }
+
+}
+
+/*=========================================================
+END OF FILE
+=========================================================*/
