@@ -130,10 +130,13 @@ const RETRY_DELAY = 1000;
                 Logger.api(
                     'Request URL: ' + url.toString()
                 );
-                
                 const response = await fetch(
                     url.toString(),
-                    options
+                    {
+                        ...options,
+                        mode: 'cors',
+                        redirect: 'follow'
+                    }
                 );
                 
                 Logger.api(
