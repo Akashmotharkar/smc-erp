@@ -263,21 +263,34 @@ const Bluetooth = (() => {
             UI.appendRawData('');
 
 
-            Parser.parse({
+            const result = Parser.parse({
 
-                ascii,
-
-                hex,
-
-                bytes: data,
-
-                timestamp,
-
-                device: currentDevice
-                    ? currentDevice.name
-                    : ''
-
-            });
+                    ascii,
+                
+                    hex,
+                
+                    bytes: data,
+                
+                    timestamp,
+                
+                    device: currentDevice
+                        ? currentDevice.name
+                        : ''
+                
+                });
+                
+                if (result) {
+                
+                    Logger.parser('Parser completed successfully.');
+                
+                    AppCallbacks.onParsedData(result);
+                
+                }
+                else {
+                
+                    Logger.warning('Parser could not recognize packet.');
+                
+                }
 
         }
         catch (error) {
@@ -315,53 +328,28 @@ const Bluetooth = (() => {
     }
 
     /*=====================================================
-    CALLBACKS FROM PARSER
-    =====================================================*/
-
-    function parserSuccess(result) {
-
-        Logger.parser('Parser completed successfully.');
-
-        AppCallbacks.onParsedData(result);
-
-    }
-
-    function parserFailed(reason) {
-
-        Logger.warning(
-            'Parser failed: ' +
-            (reason || 'Unknown format')
-        );
-
-    }
-
-    /*=====================================================
     PUBLIC API
     =====================================================*/
 
     return {
 
-        search,
+    search,
 
-        connect,
+    connect,
 
-        disconnect,
+    disconnect,
 
-        deviceFound,
+    deviceFound,
 
-        packetReceived,
+    packetReceived,
 
-        parserSuccess,
+    isConnected,
 
-        parserFailed,
+    getCurrentDevice,
 
-        isConnected,
+    getMode
 
-        getCurrentDevice,
-
-        getMode
-
-    };
+};
 
 })();
 
