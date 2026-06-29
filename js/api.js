@@ -31,9 +31,17 @@ const RETRY_DELAY = 1000;
 
     function initialize(url) {
 
-        baseUrl = (url || '').trim();
+    baseUrl = (url || '').trim();
+
+    if (!baseUrl) {
+
+        throw new Error(
+            'API URL is empty.'
+        );
 
     }
+
+}
 
     function delay(ms) {
 
