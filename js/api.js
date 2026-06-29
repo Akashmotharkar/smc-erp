@@ -156,32 +156,37 @@ const RETRY_DELAY = 1000;
                 return result;
     
             }
+
             catch (error) {
-    
+
                 clearTimeout(timeout);
-    
+            
+                Logger.error(
+                    error.name + ': ' + error.message
+                );
+            
                 if (attempt === MAX_RETRIES) {
-    
+            
                     Logger.error(
                         'API request failed after ' +
                         MAX_RETRIES +
                         ' attempts.'
                     );
-    
+            
                     throw error;
-    
+            
                 }
-    
+            
                 Logger.warning(
                     'API request failed. Retrying in ' +
                     attempt +
                     ' second(s)...'
                 );
-    
+            
                 await delay(
                     RETRY_DELAY * attempt
                 );
-    
+            
             }
     
         }
