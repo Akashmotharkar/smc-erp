@@ -127,10 +127,18 @@ const RETRY_DELAY = 1000;
                     ')'
                 );
     
+                Logger.api(
+                    'Request URL: ' + url.toString()
+                );
+                
                 const response = await fetch(
-                      url.toString(),
-                      options
-                  );
+                    url.toString(),
+                    options
+                );
+                
+                Logger.api(
+                    'HTTP Status: ' + response.status
+                );
     
                 clearTimeout(timeout);
     
@@ -142,8 +150,13 @@ const RETRY_DELAY = 1000;
                     );
     
                 }
-    
-                const result = await response.json();
+                const text = await response.text();
+                
+                Logger.api(
+                    'Response: ' + text
+                );
+                
+                const result = JSON.parse(text);
     
                 if (attempt > 1) {
     
