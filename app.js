@@ -134,15 +134,7 @@ async function handleSearchDevices() {
 
     UI.clearDeviceList();
 
-    if (App.connectionType === 'ble') {
-
-        Bluetooth.searchBLE();
-
-        return;
-
-    }
-
-    Bluetooth.searchSerial();
+    Bluetooth.search();
 
 }
 
