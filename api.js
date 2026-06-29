@@ -1,6 +1,15 @@
 'use strict';
 
 /*=========================================================
+APPLICATION CONFIGURATION
+=========================================================*/
+
+const CONFIG = {
+
+    API_URL: 'https://script.google.com/macros/s/AKfycbyw8N2mK5KukJhqIXCIAhKx2XoqDxfCO-3Y7QuyCi0w9bBw7GK1-cSimzdI84CUnoDb/exec'
+};
+
+/*=========================================================
 API MODULE
 =========================================================*/
 
