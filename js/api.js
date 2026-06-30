@@ -1,6 +1,6 @@
 'use strict';
 
-alert('API JS VERSION 4');
+alert('API JS VERSION 5');
 
 /*=========================================================
 APPLICATION CONFIGURATION
