@@ -57,227 +57,232 @@
         <!-- ==========================================================
              MAIN CONTENT
         =========================================================== -->
-        
-        <main class="main-layout">
-        
-            <!-- ==========================================
-                 SAMPLE DATA
-            =========================================== -->
-        
-            <section class="card form-card">
-        
-                <div class="card-title">
-                    Sample Data
-                </div>
-        
-                <div class="compact-grid">
-        
-                    <div class="field">
-                        <label for="fatInput">FAT</label>
-                        <input id="fatInput"
-                               type="number"
-                               readonly>
-                    </div>
-        
-                    <div class="field">
-                        <label for="snfInput">SNF</label>
-                        <input id="snfInput"
-                               type="number"
-                               readonly>
-                    </div>
-        
-                    <div class="field">
-                        <label for="clrInput">CLR</label>
-                        <input id="clrInput"
-                               type="number"
-                               readonly>
-                    </div>
-        
-                    <div class="field">
-                        <label for="sampleInput">Sample No.</label>
-                        <input id="sampleInput"
-                               type="text">
-                    </div>
-        
-                    <div class="field full-width">
-                        <label for="deviceInput">Device</label>
-                        <input id="deviceInput"
-                               type="text"
-                               readonly>
-                    </div>
-        
-                    <div class="field full-width">
-                        <label for="timeInput">Received Time</label>
-                        <input id="timeInput"
-                               type="text"
-                               readonly>
-                    </div>
-        
-                </div>
-        
-                <div class="button-row">
-        
-                    <button id="clearValuesBtn"
-                            class="secondary-btn">
-                        Clear Values
-                    </button>
-        
-                    <button id="saveSampleBtn"
-                            class="primary-btn">
-                        Save Sample
-                    </button>
-        
-                </div>
-        
-            </section>
-        
-            <!-- ==========================================
-                 BLUETOOTH
-            =========================================== -->
-        
-            <section class="card bluetooth-card">
-        
-                <div class="card-title">
-                    Bluetooth Connection
-                </div>
-        
-                <div class="connection-type">
-        
-                    <label class="radio-item">
-                        <input
-                            type="radio"
-                            id="bleRadio"
-                            name="connectionType"
-                            value="ble"
-                            checked>
-                        BLE
-                    </label>
-        
-                    <label class="radio-item">
-                        <input
-                            type="radio"
-                            id="serialRadio"
-                            name="connectionType"
-                            value="serial">
-                        Serial Bluetooth
-                    </label>
-        
-                </div>
-        
-                <div class="button-grid">
-        
-                    <button id="searchBtn"
-                            class="primary-btn">
-                        Search
-                    </button>
-        
-                    <button id="refreshStatusBtn"
-                            class="secondary-btn">
-                        Refresh
-                    </button>
-        
-                    <button id="connectBtn"
-                            class="primary-btn"
-                            disabled>
-                        Connect
-                    </button>
-        
-                    <button id="disconnectBtn"
-                            class="danger-btn"
-                            disabled>
-                        Disconnect
-                    </button>
-        
-                    <button id="clearLogBtn"
-                            class="secondary-btn">
-                        Clear Log
-                    </button>
-        
-                </div>
-        
-                <div class="section-label">
-                    Available Devices
-                </div>
-        
-                <select id="deviceList"
-                        size="6">
-                </select>
-        
-            </section>
-        
-        </main>        
-
         <!-- ==========================================================
-             DIAGNOSTICS
+             CONTENT AREA
         ========================================================== -->
         
-        <section class="diagnostic-layout">
+        <div class="content-layout">
         
-            <!-- RAW DATA -->
+            <!-- ======================================================
+                 LEFT COLUMN
+            ======================================================= -->
         
-            <section class="card">
+            <div class="left-column">
         
-                <div class="card-title">
-                    Raw Data
-                </div>
+                <!-- ==========================================
+                     SAMPLE DATA
+                =========================================== -->
         
-                <div class="toolbar">
+                <section class="card form-card">
         
-                    <button id="copyRawBtn"
-                            class="secondary-btn">
+                    <div class="card-title">
+                        Sample Data
+                    </div>
         
-                        Copy
+                    <div class="compact-grid">
         
-                    </button>
+                        <div class="field">
+                            <label for="fatInput">FAT</label>
+                            <input id="fatInput"
+                                   type="number"
+                                   readonly>
+                        </div>
         
-                    <button id="clearRawBtn"
-                            class="secondary-btn">
+                        <div class="field">
+                            <label for="snfInput">SNF</label>
+                            <input id="snfInput"
+                                   type="number"
+                                   readonly>
+                        </div>
         
-                        Clear
+                        <div class="field">
+                            <label for="clrInput">CLR</label>
+                            <input id="clrInput"
+                                   type="number"
+                                   readonly>
+                        </div>
         
-                    </button>
+                        <div class="field">
+                            <label for="sampleInput">Sample No.</label>
+                            <input id="sampleInput"
+                                   type="text">
+                        </div>
         
-                </div>
+                        <div class="field full-width">
+                            <label for="deviceInput">Device</label>
+                            <input id="deviceInput"
+                                   type="text"
+                                   readonly>
+                        </div>
         
-                <pre id="rawDataPanel"
-                     class="raw-panel">
-                </pre>
+                        <div class="field full-width">
+                            <label for="timeInput">Received Time</label>
+                            <input id="timeInput"
+                                   type="text"
+                                   readonly>
+                        </div>
         
-            </section>
+                    </div>
         
-            <!-- EVENT LOG -->
+                    <div class="button-row">
         
-            <section class="card">
+                        <button id="clearValuesBtn"
+                                class="secondary-btn">
+                            Clear Values
+                        </button>
         
-                <div class="card-title">
-                    Event Log
-                </div>
+                        <button id="saveSampleBtn"
+                                class="primary-btn">
+                            Save Sample
+                        </button>
         
-                <div class="toolbar">
+                    </div>
         
-                    <button id="copyLogBtn"
-                            class="secondary-btn">
+                </section>
         
-                        Copy Log
+                <!-- ==========================================
+                     EVENT LOG
+                =========================================== -->
         
-                    </button>
+                <section class="card">
         
-                    <button id="downloadLogBtn"
-                            class="secondary-btn">
+                    <div class="card-title">
+                        Event Log
+                    </div>
         
-                        Download
+                    <div class="toolbar">
         
-                    </button>
+                        <button id="copyLogBtn"
+                                class="secondary-btn">
+                            Copy Log
+                        </button>
         
-                </div>
+                        <button id="downloadLogBtn"
+                                class="secondary-btn">
+                            Download
+                        </button>
         
-                <div id="logPanel"
-                     class="log-panel">
-                </div>
+                    </div>
         
-            </section>
+                    <div id="logPanel"
+                         class="log-panel">
+                    </div>
         
-        </section>
+                </section>
+        
+            </div>
+        
+            <!-- ======================================================
+                 RIGHT COLUMN
+            ======================================================= -->
+        
+            <div class="right-column">
+        
+                <!-- ==========================================
+                     BLUETOOTH
+                =========================================== -->
+        
+                <section class="card bluetooth-card">
+        
+                    <div class="card-title">
+                        Bluetooth Connection
+                    </div>
+        
+                    <div class="connection-type">
+        
+                        <label class="radio-item">
+                            <input type="radio"
+                                   id="bleRadio"
+                                   name="connectionType"
+                                   value="ble"
+                                   checked>
+                            BLE
+                        </label>
+        
+                        <label class="radio-item">
+                            <input type="radio"
+                                   id="serialRadio"
+                                   name="connectionType"
+                                   value="serial">
+                            Serial Bluetooth
+                        </label>
+        
+                    </div>
+        
+                    <div class="button-grid">
+        
+                        <button id="searchBtn"
+                                class="primary-btn">
+                            Search
+                        </button>
+        
+                        <button id="refreshStatusBtn"
+                                class="secondary-btn">
+                            Refresh
+                        </button>
+        
+                        <button id="connectBtn"
+                                class="primary-btn"
+                                disabled>
+                            Connect
+                        </button>
+        
+                        <button id="disconnectBtn"
+                                class="danger-btn"
+                                disabled>
+                            Disconnect
+                        </button>
+        
+                        <button id="clearLogBtn"
+                                class="secondary-btn">
+                            Clear Log
+                        </button>
+        
+                    </div>
+        
+                    <div class="section-label">
+                        Available Devices
+                    </div>
+        
+                    <select id="deviceList"
+                            size="6">
+                    </select>
+        
+                </section>
+        
+                <!-- ==========================================
+                     RAW DATA
+                =========================================== -->
+        
+                <section class="card">
+        
+                    <div class="card-title">
+                        Raw Data
+                    </div>
+        
+                    <div class="toolbar">
+        
+                        <button id="copyRawBtn"
+                                class="secondary-btn">
+                            Copy
+                        </button>
+        
+                        <button id="clearRawBtn"
+                                class="secondary-btn">
+                            Clear
+                        </button>
+        
+                    </div>
+        
+                    <pre id="rawDataPanel"
+                         class="raw-panel">
+                    </pre>
+        
+                </section>
+        
+            </div>
+        
+        </div>
       
         <!-- ==========================================================
              LOADING OVERLAY
