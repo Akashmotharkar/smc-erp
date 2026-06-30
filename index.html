@@ -57,329 +57,155 @@
         <!-- ==========================================================
              MAIN CONTENT
         =========================================================== -->
-
+        
         <main class="main-layout">
-
-            <!-- ======================================================
-                 LEFT PANEL
-            ======================================================= -->
-
+        
+            <!-- ==========================================
+                 SAMPLE DATA
+            =========================================== -->
+        
             <section class="card form-card">
-
+        
                 <div class="card-title">
-
                     Sample Data
-
                 </div>
-
-                <div class="form-grid">
-
+        
+                <div class="compact-grid">
+        
                     <div class="field">
-
-                        <label for="fatInput">
-
-                            FAT
-
-                        </label>
-
-                        <input
-                               id="fatInput"
+                        <label for="fatInput">FAT</label>
+                        <input id="fatInput"
                                type="number"
-                               inputmode="decimal"
-                               autocomplete="off"
                                readonly>
-
                     </div>
-
+        
                     <div class="field">
-
-                        <label for="snfInput">
-
-                            SNF
-
-                        </label>
-
-                        <input
-                               id="snfInput"
+                        <label for="snfInput">SNF</label>
+                        <input id="snfInput"
                                type="number"
-                               inputmode="decimal"
-                               autocomplete="off"
                                readonly>
-
                     </div>
-
+        
                     <div class="field">
-
-                        <label for="clrInput">
-
-                            CLR
-
-                        </label>
-
-                        <input
-                               id="clrInput"
+                        <label for="clrInput">CLR</label>
+                        <input id="clrInput"
                                type="number"
-                               inputmode="decimal"
-                               autocomplete="off"
                                readonly>
-
                     </div>
-
+        
                     <div class="field">
-
-                        <label for="sampleInput">
-
-                            Sample No.
-
-                        </label>
-
-                        <input
-                               id="sampleInput"
-                               type="text"
-                               autocomplete="off">
-
+                        <label for="sampleInput">Sample No.</label>
+                        <input id="sampleInput"
+                               type="text">
                     </div>
-
-                    <div class="field">
-
-                        <label for="deviceInput">
-
-                            Device
-
-                        </label>
-
-                        <input
-                               id="deviceInput"
+        
+                    <div class="field full-width">
+                        <label for="deviceInput">Device</label>
+                        <input id="deviceInput"
                                type="text"
                                readonly>
-
                     </div>
-
-                    <div class="field">
-
-                        <label for="timeInput">
-
-                            Received Time
-
-                        </label>
-
-                        <input
-                               id="timeInput"
+        
+                    <div class="field full-width">
+                        <label for="timeInput">Received Time</label>
+                        <input id="timeInput"
                                type="text"
                                readonly>
-
                     </div>
-
+        
                 </div>
-
+        
                 <div class="button-row">
-
+        
                     <button id="clearValuesBtn"
                             class="secondary-btn">
-
                         Clear Values
-
                     </button>
-
+        
                     <button id="saveSampleBtn"
                             class="primary-btn">
-
                         Save Sample
-
                     </button>
-
+        
                 </div>
-
+        
             </section>
-
-            <!-- ======================================================
-                 RIGHT PANEL
-            ======================================================= -->
-
+        
+            <!-- ==========================================
+                 BLUETOOTH
+            =========================================== -->
+        
             <section class="card bluetooth-card">
-
+        
                 <div class="card-title">
-
                     Bluetooth Connection
-
                 </div>
-
+        
                 <div class="connection-type">
-
+        
                     <label class="radio-item">
-
                         <input
-                               type="radio"
-                               name="connectionType"
-                               id="bleRadio"
-                               value="ble"
-                               checked>
-
-                        <span>
-
-                            BLE
-
-                        </span>
-
+                            type="radio"
+                            id="bleRadio"
+                            name="connectionType"
+                            value="ble"
+                            checked>
+                        BLE
                     </label>
-
+        
                     <label class="radio-item">
-
                         <input
-                               type="radio"
-                               name="connectionType"
-                               id="serialRadio"
-                               value="serial">
-
-                        <span>
-
-                            Serial Bluetooth
-
-                        </span>
-
+                            type="radio"
+                            id="serialRadio"
+                            name="connectionType"
+                            value="serial">
+                        Serial Bluetooth
                     </label>
-
+        
                 </div>
-            
-              <div class="button-grid">
-
-                        <button id="searchBtn"
-                                class="primary-btn">
-                    
-                            Search Devices
-                    
-                        </button>
-                    
-                        <button id="refreshStatusBtn"
-                                class="secondary-btn">
-                    
-                            Refresh Status
-                    
-                        </button>
-                    
-                        <button id="connectBtn"
-                                class="primary-btn"
-                                disabled>
-                    
-                            Connect
-                    
-                        </button>
-                    
-                        <button id="disconnectBtn"
-                                class="danger-btn"
-                                disabled>
-                    
-                            Disconnect
-                    
-                        </button>
-                    
-                        <button id="clearLogBtn"
-                                class="secondary-btn">
-                    
-                            Clear Log
-                    
-                        </button>
-                    
-                    </div>
-
+        
+                <div class="button-grid">
+        
+                    <button id="searchBtn"
+                            class="primary-btn">
+                        Search
+                    </button>
+        
+                    <button id="refreshStatusBtn"
+                            class="secondary-btn">
+                        Refresh
+                    </button>
+        
+                    <button id="connectBtn"
+                            class="primary-btn"
+                            disabled>
+                        Connect
+                    </button>
+        
+                    <button id="disconnectBtn"
+                            class="danger-btn"
+                            disabled>
+                        Disconnect
+                    </button>
+        
+                    <button id="clearLogBtn"
+                            class="secondary-btn">
+                        Clear Log
+                    </button>
+        
+                </div>
+        
                 <div class="section-label">
-
                     Available Devices
-
                 </div>
-
+        
                 <select id="deviceList"
                         size="6">
-
                 </select>
-
-                <div class="status-grid">
-
-                    <div class="status-row">
-
-                        <span>
-
-                            Browser
-
-                        </span>
-
-                        <span id="browserStatus">
-
-                            -
-
-                        </span>
-
-                    </div>
-
-                    <div class="status-row">
-
-                        <span>
-
-                            HTTPS
-
-                        </span>
-
-                        <span id="httpsStatus">
-
-                            -
-
-                        </span>
-
-                    </div>
-
-                    <div class="status-row">
-
-                        <span>
-
-                            Web Bluetooth
-
-                        </span>
-
-                        <span id="bleStatus">
-
-                            -
-
-                        </span>
-
-                    </div>
-
-                    <div class="status-row">
-
-                        <span>
-
-                            Web Serial
-
-                        </span>
-
-                        <span id="serialStatus">
-
-                            -
-
-                        </span>
-
-                    </div>
-
-                    <div class="status-row">
-
-                        <span>
-
-                            Connection
-
-                        </span>
-
-                        <span id="connectionStatus">
-
-                            Disconnected
-
-                        </span>
-
-                    </div>
-
-                </div>
-
+        
             </section>
-
-        </main>
+        
+        </main>        
 
         <!-- ==========================================================
              RAW DATA
