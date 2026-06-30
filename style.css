@@ -1,35 +1,44 @@
+/*=========================================================
+MILK ANALYZER BLUETOOTH TESTER
+STYLE SHEET
+PART 1
+=========================================================*/
+
+/*=========================================================
+ROOT VARIABLES
+=========================================================*/
+
 :root{
 
     --primary:#1976d2;
-    --primary-dark:#0d47a1;
+    --primary-dark:#1565c0;
 
     --success:#2e7d32;
-    --warning:#ef6c00;
-    --danger:#c62828;
+    --warning:#ed6c02;
+    --danger:#d32f2f;
 
     --background:#f4f6f8;
-    --surface:#ffffff;
+    --card:#ffffff;
 
-    --text:#202124;
-    --text-light:#5f6368;
+    --border:#d9d9d9;
 
-    --border:#d7dce2;
+    --text:#222;
+    --text-light:#666;
 
-    --shadow:0 2px 10px rgba(0,0,0,.08);
+    --shadow:
+        0 2px 8px rgba(0,0,0,.08);
 
     --radius:12px;
 
-    --transition:.20s ease;
+    --header-height:72px;
 
-    --header-height:64px;
-
-    font-family:
-        Roboto,
-        Arial,
-        Helvetica,
-        sans-serif;
+    --gap:14px;
 
 }
+
+/*=========================================================
+RESET
+=========================================================*/
 
 *{
 
@@ -43,67 +52,143 @@
 
 html{
 
+    width:100%;
+
     height:100%;
 
 }
 
 body{
 
-    min-height:100vh;
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
 
     background:var(--background);
 
     color:var(--text);
 
-    overflow-x:hidden;
+    font-family:
 
-    -webkit-tap-highlight-color:transparent;
+        "Segoe UI",
 
-}
+        Roboto,
 
-button,
-input,
-select{
+        Arial,
 
-    font:inherit;
+        sans-serif;
 
 }
 
-button{
-
-    cursor:pointer;
-
-    border:none;
-
-}
-
-input{
-
-    outline:none;
-
-}
-
-select{
-
-    outline:none;
-
-}
+/*=========================================================
+APP
+=========================================================*/
 
 #app{
 
-    width:100%;
+    width:100vw;
 
-    min-height:100vh;
+    height:100vh;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:16px;
-
     padding:12px;
 
+    gap:12px;
+
 }
+
+/*=========================================================
+COMMON
+=========================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+}
+
+.card-title{
+
+    padding:12px 16px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.section-label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+    margin:12px 0 8px;
+
+}
+
+/*=========================================================
+MAIN LAYOUT
+=========================================================*/
+
+.main-layout{
+
+    flex:0 0 auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+        420px
+
+        1fr;
+
+    gap:14px;
+
+}
+
+.diagnostic-layout{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr
+
+        1fr;
+
+    gap:14px;
+
+    min-height:0;
+
+}
+
+/*=========================================================
+END PART 1
+=========================================================*/
 
 /*=========================================================
 HEADER
@@ -111,13 +196,7 @@ HEADER
 
 .app-header{
 
-    background:var(--surface);
-
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow);
-
-    min-height:var(--header-height);
+    height:72px;
 
     display:flex;
 
@@ -125,7 +204,17 @@ HEADER
 
     justify-content:space-between;
 
-    padding:14px 18px;
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:0 20px;
+
+    flex-shrink:0;
 
 }
 
@@ -135,23 +224,27 @@ HEADER
 
     flex-direction:column;
 
+    justify-content:center;
+
     gap:4px;
 
 }
 
 .header-left h1{
 
-    font-size:22px;
+    font-size:28px;
 
-    font-weight:700;
+    font-weight:600;
+
+    color:var(--primary);
 
 }
 
 .version-label{
 
-    color:var(--text-light);
-
     font-size:13px;
+
+    color:var(--text-light);
 
 }
 
@@ -163,19 +256,27 @@ HEADER
 
 }
 
+/*=========================================================
+STATUS BADGE
+=========================================================*/
+
 .status-badge{
 
-    min-width:120px;
+    min-width:140px;
 
     text-align:center;
 
-    padding:10px 16px;
+    padding:10px 18px;
 
-    border-radius:999px;
+    border-radius:24px;
+
+    font-size:15px;
+
+    font-weight:600;
 
     color:#fff;
 
-    font-weight:600;
+    transition:.25s;
 
 }
 
@@ -198,130 +299,48 @@ HEADER
 }
 
 /*=========================================================
-MAIN LAYOUT
-=========================================================*/
-
-.main-layout{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:16px;
-
-}
-
-.card{
-
-    background:var(--surface);
-
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow);
-
-    padding:18px;
-
-}
-
-.card-title{
-
-    font-size:18px;
-
-    font-weight:700;
-
-    margin-bottom:18px;
-
-}
-
-.form-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:14px;
-
-}
-
-.field{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-.field label{
-
-    font-size:14px;
-
-    color:var(--text-light);
-
-    font-weight:600;
-
-}
-
-.field input{
-
-    width:100%;
-
-    height:46px;
-
-    padding:0 12px;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
-    background:#fff;
-
-}
-
-.field input:focus{
-
-    border-color:var(--primary);
-
-}
-
-/*=========================================================
 BUTTONS
 =========================================================*/
 
-.button-row{
+button{
 
-    display:flex;
+    border:none;
 
-    gap:12px;
+    border-radius:8px;
 
-    margin-top:20px;
+    cursor:pointer;
 
-}
-
-.button-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-    margin:18px 0;
-
-}
-
-.primary-btn,
-.secondary-btn,
-.danger-btn{
-
-    height:46px;
-
-    border-radius:10px;
+    font-size:15px;
 
     font-weight:600;
 
-    transition:var(--transition);
+    transition:.2s;
+
+    height:42px;
+
+    padding:0 18px;
+
+}
+
+button:hover{
+
+    transform:translateY(-1px);
+
+}
+
+button:active{
+
+    transform:translateY(1px);
+
+}
+
+button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
 
 }
 
@@ -343,7 +362,7 @@ BUTTONS
 
     background:#eceff1;
 
-    color:var(--text);
+    color:#222;
 
 }
 
@@ -363,29 +382,171 @@ BUTTONS
 
 .danger-btn:hover{
 
-    filter:brightness(.95);
-
-}
-
-button:disabled{
-
-    opacity:.55;
-
-    cursor:not-allowed;
+    background:#b71c1c;
 
 }
 
 /*=========================================================
-BLUETOOTH PANEL
+BUTTON GROUPS
+=========================================================*/
+
+.button-row{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:16px;
+
+}
+
+.button-row button{
+
+    flex:1;
+
+}
+
+.button-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:14px;
+
+    margin-bottom:14px;
+
+}
+
+/*=========================================================
+END PART 2
+=========================================================*/
+
+/*=========================================================
+FORM CARD
+=========================================================*/
+
+.form-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.compact-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+    gap:12px;
+
+    padding:16px;
+
+}
+
+.full-width{
+
+    grid-column:1 / -1;
+
+}
+
+/*=========================================================
+FIELDS
+=========================================================*/
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.field label{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+}
+
+.field input{
+
+    width:100%;
+
+    height:42px;
+
+    padding:0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:#fff;
+
+    font-size:16px;
+
+    color:var(--text);
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+.field input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 3px
+
+        rgba(25,118,210,.15);
+
+}
+
+.field input[readonly]{
+
+    background:#f5f5f5;
+
+}
+
+/*=========================================================
+BLUETOOTH CARD
+=========================================================*/
+
+.bluetooth-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*=========================================================
+CONNECTION TYPE
 =========================================================*/
 
 .connection-type{
 
     display:flex;
 
-    gap:22px;
+    align-items:center;
 
-    margin-bottom:18px;
+    gap:28px;
+
+    padding:16px;
 
 }
 
@@ -399,6 +560,10 @@ BLUETOOTH PANEL
 
     font-size:15px;
 
+    font-weight:600;
+
+    cursor:pointer;
+
 }
 
 .radio-item input{
@@ -409,41 +574,37 @@ BLUETOOTH PANEL
 
 }
 
-.section-label{
-
-    margin-top:18px;
-
-    margin-bottom:8px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    color:var(--text-light);
-
-}
+/*=========================================================
+DEVICE LIST
+=========================================================*/
 
 #deviceList{
 
     width:100%;
 
-    height:180px;
+    flex:1;
+
+    min-height:220px;
 
     border:1px solid var(--border);
 
-    border-radius:10px;
-
-    padding:8px;
+    border-radius:8px;
 
     background:#fff;
 
-    font-size:14px;
+    padding:8px;
+
+    font-size:15px;
+
+    outline:none;
 
 }
 
 #deviceList option{
 
-    padding:8px;
+    padding:10px;
+
+    border-radius:6px;
 
 }
 
@@ -456,16 +617,50 @@ BLUETOOTH PANEL
 }
 
 /*=========================================================
-STATUS GRID
+INPUTS INSIDE BLUETOOTH CARD
+=========================================================*/
+
+.bluetooth-card .section-label{
+
+    padding-left:16px;
+
+    margin-top:6px;
+
+}
+
+.bluetooth-card .button-grid{
+
+    padding:0 16px;
+
+}
+
+.bluetooth-card #deviceList{
+
+    margin:0 16px 16px;
+
+    width:auto;
+
+}
+
+/*=========================================================
+END PART 3
+=========================================================*/
+
+/*=========================================================
+SYSTEM STATUS
 =========================================================*/
 
 .status-grid{
 
-    margin-top:18px;
-
     display:grid;
 
-    gap:8px;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:10px;
+
+    padding:16px;
+
+    border-top:1px solid var(--border);
 
 }
 
@@ -473,13 +668,15 @@ STATUS GRID
 
     display:flex;
 
-    justify-content:space-between;
+    flex-direction:column;
 
     align-items:center;
 
-    min-height:34px;
+    justify-content:center;
 
-    padding:0 10px;
+    gap:6px;
+
+    min-height:62px;
 
     border:1px solid var(--border);
 
@@ -491,15 +688,25 @@ STATUS GRID
 
 .status-row span:first-child{
 
-    font-weight:600;
+    font-size:12px;
 
     color:var(--text-light);
+
+    font-weight:600;
 
 }
 
 .status-row span:last-child{
 
+    font-size:15px;
+
     font-weight:600;
+
+    color:var(--text);
+
+    text-align:center;
+
+    word-break:break-word;
 
 }
 
@@ -511,49 +718,59 @@ TOOLBAR
 
     display:flex;
 
+    justify-content:flex-end;
+
     gap:10px;
 
-    flex-wrap:wrap;
+    padding:12px 16px;
 
-    margin-bottom:14px;
+    border-bottom:1px solid var(--border);
+
+    background:#fafafa;
+
+}
+
+.toolbar button{
+
+    min-width:110px;
 
 }
 
 /*=========================================================
-RAW DATA PANEL
+RAW PANEL
 =========================================================*/
 
 .raw-panel{
 
-    width:100%;
+    flex:1;
 
-    min-height:180px;
-    max-height:300px;
+    height:320px;
 
     overflow:auto;
 
-    padding:14px;
+    padding:16px;
 
-    border:1px solid var(--border);
+    background:#111;
 
-    border-radius:10px;
-
-    background:#111827;
-
-    color:#00e676;
+    color:#00ff66;
 
     font-family:
+
         Consolas,
+
         "Courier New",
+
         monospace;
 
     font-size:13px;
 
-    line-height:1.6;
+    line-height:1.45;
 
     white-space:pre-wrap;
 
-    word-break:break-word;
+    border-bottom-left-radius:12px;
+
+    border-bottom-right-radius:12px;
 
 }
 
@@ -567,55 +784,55 @@ LOG PANEL
 
     overflow-y:auto;
 
-    overflow-x:hidden;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
-    background:#fafafa;
+    background:#ffffff;
 
     padding:10px;
 
+    border-bottom-left-radius:12px;
+
+    border-bottom-right-radius:12px;
+
 }
+
+/*=========================================================
+LOG ITEMS
+=========================================================*/
 
 .log-item{
 
-    display:flex;
+    display:grid;
 
-    align-items:flex-start;
+    grid-template-columns:85px 1fr;
 
     gap:10px;
 
-    padding:8px 10px;
+    padding:8px 6px;
 
-    margin-bottom:6px;
+    border-bottom:1px solid #eeeeee;
 
-    border-radius:8px;
+    font-size:13px;
 
-    font-size:14px;
+}
 
-    line-height:1.45;
+.log-item:last-child{
 
-    word-break:break-word;
+    border-bottom:none;
 
 }
 
 .log-time{
 
-    min-width:82px;
+    color:#777;
 
     font-weight:600;
 
-    color:var(--text-light);
-
-    flex-shrink:0;
+    white-space:nowrap;
 
 }
 
 .log-message{
 
-    flex:1;
+    word-break:break-word;
 
 }
 
@@ -625,57 +842,43 @@ LOG COLORS
 
 .log-info{
 
-    background:#e3f2fd;
-
-    color:#0d47a1;
+    color:#1565c0;
 
 }
 
 .log-success{
 
-    background:#e8f5e9;
-
-    color:#1b5e20;
+    color:#2e7d32;
 
 }
 
 .log-warning{
 
-    background:#fff3e0;
-
-    color:#e65100;
+    color:#ef6c00;
 
 }
 
 .log-error{
 
-    background:#ffebee;
-
-    color:#b71c1c;
+    color:#c62828;
 
 }
 
 .log-parser{
 
-    background:#ede7f6;
-
-    color:#4527a0;
-
-}
-
-.log-receive{
-
-    background:#e0f7fa;
-
-    color:#006064;
+    color:#6a1b9a;
 
 }
 
 .log-api{
 
-    background:#f3e5f5;
+    color:#00838f;
 
-    color:#6a1b9a;
+}
+
+.log-receive{
+
+    color:#37474f;
 
 }
 
@@ -693,57 +896,235 @@ LOADING OVERLAY
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     z-index:9999;
 
 }
 
-.loading-overlay.hidden{
-
-    display:none;
-
-}
-
 .loading-box{
 
-    min-width:220px;
-
-    padding:24px;
+    width:260px;
 
     background:#fff;
 
     border-radius:12px;
 
-    box-shadow:var(--shadow);
+    padding:24px;
 
-    display:flex;
+    text-align:center;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 
 }
 
 .spinner{
 
-    width:42px;
+    width:48px;
 
-    height:42px;
+    height:48px;
 
-    border:4px solid #dfe3e8;
+    margin:0 auto 18px;
 
-    border-top-color:var(--primary);
+    border:5px solid #e0e0e0;
+
+    border-top:5px solid var(--primary);
 
     border-radius:50%;
 
-    animation:spin .9s linear infinite;
+    animation:spin .8s linear infinite;
 
 }
+
+#loadingText{
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+/*=========================================================
+TABLET LANDSCAPE
+=========================================================*/
+
+@media (max-width:1200px){
+
+    .main-layout{
+
+        grid-template-columns:
+
+            360px
+
+            1fr;
+
+    }
+
+}
+
+@media (max-width:1024px){
+
+    #app{
+
+        padding:10px;
+
+        gap:10px;
+
+    }
+
+    .main-layout{
+
+        grid-template-columns:
+
+            340px
+
+            1fr;
+
+        gap:10px;
+
+    }
+
+    .diagnostic-layout{
+
+        gap:10px;
+
+    }
+
+    .header-left h1{
+
+        font-size:24px;
+
+    }
+
+}
+
+/*=========================================================
+PORTRAIT FALLBACK
+=========================================================*/
+
+@media (max-width:900px){
+
+    body{
+
+        overflow:auto;
+
+    }
+
+    #app{
+
+        height:auto;
+
+    }
+
+    .main-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .diagnostic-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .status-grid{
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+    }
+
+}
+
+/*=========================================================
+SMALL PHONE
+=========================================================*/
+
+@media (max-width:600px){
+
+    .compact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .full-width{
+
+        grid-column:auto;
+
+    }
+
+    .button-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .button-row{
+
+        flex-direction:column;
+
+    }
+
+    .status-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .toolbar{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+}
+
+/*=========================================================
+SCROLLBARS
+=========================================================*/
+
+.raw-panel::-webkit-scrollbar,
+
+.log-panel::-webkit-scrollbar,
+
+#deviceList::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+.raw-panel::-webkit-scrollbar-thumb,
+
+.log-panel::-webkit-scrollbar-thumb,
+
+#deviceList::-webkit-scrollbar-thumb{
+
+    background:#bdbdbd;
+
+    border-radius:10px;
+
+}
+
+.raw-panel::-webkit-scrollbar-track,
+
+.log-panel::-webkit-scrollbar-track,
+
+#deviceList::-webkit-scrollbar-track{
+
+    background:#eeeeee;
+
+}
+
+/*=========================================================
+ANIMATION
+=========================================================*/
 
 @keyframes spin{
 
@@ -762,301 +1143,230 @@ LOADING OVERLAY
 }
 
 /*=========================================================
-SCROLLBAR
+FOCUS
 =========================================================*/
 
-::-webkit-scrollbar{
+button:focus,
 
-    width:10px;
+input:focus,
 
-    height:10px;
+select:focus{
 
-}
-
-::-webkit-scrollbar-track{
-
-    background:#eceff1;
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#b0bec5;
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:#90a4ae;
+    outline:none;
 
 }
 
 /*=========================================================
-UTILITY CLASSES
+END OF STYLE SHEET
 =========================================================*/
-
-.hidden{
-
-    display:none !important;
-
-}
-
-.text-success{
-
-    color:var(--success);
-
-}
-
-.text-warning{
-
-    color:var(--warning);
-
-}
-
-.text-danger{
-
-    color:var(--danger);
-
-}
-
-.text-primary{
-
-    color:var(--primary);
-
-}
-
-.text-center{
-
-    text-align:center;
-
-}
-
-.full-width{
-
-    width:100%;
-
-}
 
 /*=========================================================
-INPUT STATES
+PART 6
+FINAL TABLET OPTIMIZATION
 =========================================================*/
 
-input[readonly]{
-
-    background:#f5f5f5;
-
-    color:#424242;
-
-}
-
-input:disabled,
-select:disabled,
-button:disabled{
-
-    opacity:.6;
-
-}
-
-/*=========================================================
-CARD SPACING
-=========================================================*/
+/*-----------------------------------------
+Card Layout
+-----------------------------------------*/
 
 .form-card{
 
-    display:flex;
-
-    flex-direction:column;
+    height:100%;
 
 }
 
 .bluetooth-card{
 
+    height:100%;
+
+}
+
+.diagnostic-layout > .card{
+
     display:flex;
 
     flex-direction:column;
 
+    min-height:0;
+
 }
 
-/*=========================================================
-MOBILE
-=========================================================*/
+/*-----------------------------------------
+Compact spacing
+-----------------------------------------*/
 
-@media (max-width:900px){
+.card-title{
+
+    padding:10px 14px;
+
+}
+
+.compact-grid{
+
+    gap:10px;
+
+    padding:14px;
+
+}
+
+.field{
+
+    gap:4px;
+
+}
+
+.field label{
+
+    font-size:12px;
+
+}
+
+.field input{
+
+    height:38px;
+
+    font-size:15px;
+
+}
+
+.button-row{
+
+    margin-top:10px;
+
+    padding:0 14px 14px;
+
+}
+
+.button-grid{
+
+    margin-top:10px;
+
+    margin-bottom:10px;
+
+}
+
+/*-----------------------------------------
+Device List
+-----------------------------------------*/
+
+#deviceList{
+
+    min-height:240px;
+
+    font-size:14px;
+
+}
+
+#deviceList option{
+
+    padding:8px;
+
+}
+
+/*-----------------------------------------
+Toolbar
+-----------------------------------------*/
+
+.toolbar{
+
+    padding:8px 12px;
+
+}
+
+.toolbar button{
+
+    height:36px;
+
+    min-width:90px;
+
+    font-size:14px;
+
+}
+
+/*-----------------------------------------
+Raw Panel
+-----------------------------------------*/
+
+.raw-panel{
+
+    flex:1;
+
+    height:auto;
+
+    min-height:260px;
+
+}
+
+/*-----------------------------------------
+Log Panel
+-----------------------------------------*/
+
+.log-panel{
+
+    flex:1;
+
+    height:auto;
+
+    min-height:260px;
+
+}
+
+.log-item{
+
+    padding:6px;
+
+    font-size:12px;
+
+}
+
+.log-time{
+
+    width:75px;
+
+}
+
+/*-----------------------------------------
+Status Grid
+-----------------------------------------*/
+
+.status-grid{
+
+    padding:12px;
+
+    gap:8px;
+
+}
+
+.status-row{
+
+    min-height:55px;
+
+}
+
+.status-row span:first-child{
+
+    font-size:11px;
+
+}
+
+.status-row span:last-child{
+
+    font-size:13px;
+
+}
+
+/*-----------------------------------------
+Landscape (10-inch Tablet)
+-----------------------------------------*/
+
+@media (min-width:1000px){
 
     #app{
 
-        padding:10px;
+        max-width:1600px;
 
-        gap:12px;
-
-    }
-
-    .main-layout{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .app-header{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:12px;
-
-    }
-
-    .header-right{
-
-        width:100%;
-
-    }
-
-    .status-badge{
-
-        width:100%;
-
-    }
-
-    .button-row{
-
-        flex-direction:column;
-
-    }
-
-    .button-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    #deviceList{
-
-        height:150px;
-
-    }
-
-    .log-panel{
-
-        height:260px;
-
-    }
-
-    .raw-panel{
-
-        min-height:140px;
+        margin:auto;
 
     }
 
 }
-
-/*=========================================================
-TABLET
-=========================================================*/
-
-@media (min-width:901px) and (max-width:1200px){
-
-    .main-layout{
-
-        grid-template-columns:1fr 1fr;
-
-        gap:14px;
-
-    }
-
-    .card{
-
-        padding:16px;
-
-    }
-
-}
-
-/*=========================================================
-FOCUS STYLES
-=========================================================*/
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible{
-
-    outline:3px solid rgba(25,118,210,.20);
-
-    outline-offset:2px;
-
-}
-
-/*=========================================================
-TOUCH IMPROVEMENTS
-=========================================================*/
-
-button{
-
-    touch-action:manipulation;
-
-    user-select:none;
-
-}
-
-select{
-
-    touch-action:manipulation;
-
-}
-
-input{
-
-    touch-action:manipulation;
-
-}
-
-/*=========================================================
-TEXT SELECTION
-=========================================================*/
-
-::selection{
-
-    background:rgba(25,118,210,.20);
-
-}
-
-/*=========================================================
-PRINT
-=========================================================*/
-
-@media print{
-
-    body{
-
-        background:#fff;
-
-    }
-
-    .button-row,
-    .button-grid,
-    .toolbar{
-
-        display:none;
-
-    }
-
-    .card{
-
-        box-shadow:none;
-
-        border:1px solid #ccc;
-
-        break-inside:avoid;
-
-    }
-
-}
-
-/*=========================================================
-END OF FILE
-=========================================================*/
