@@ -124,7 +124,8 @@ COMMON
 
 }
 
-.diagnostic-layout .card{
+.left-column .card,
+.right-column .card{
 
     display:flex;
 
@@ -159,40 +160,58 @@ COMMON
 }
 
 /*=========================================================
-MAIN LAYOUT
+CONTENT LAYOUT
 =========================================================*/
-
-.main-layout{
-
-    flex:0 0 auto;
-
-    display:grid;
-
-    grid-template-columns:
-
-        320px
-
-        1fr;
-
-    gap:14px;
-
-    align-items:start;
-
-}
-
-.diagnostic-layout{
-
-    flex:1;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:14px;
-
-    min-height:0;
-
-}
+        
+        .content-layout{
+        
+            flex:1;
+        
+            display:grid;
+        
+            grid-template-columns:
+        
+                340px
+        
+                1fr;
+        
+            gap:14px;
+        
+            min-height:0;
+        
+        }
+        
+        .left-column{
+        
+            display:grid;
+        
+            grid-template-rows:
+        
+                auto
+        
+                1fr;
+        
+            gap:14px;
+        
+            min-height:0;
+        
+        }
+        
+        .right-column{
+        
+            display:grid;
+        
+            grid-template-rows:
+        
+                auto
+        
+                1fr;
+        
+            gap:14px;
+        
+            min-height:0;
+        
+        }
 
 /*=========================================================
 END PART 1
@@ -525,6 +544,20 @@ FIELDS
 .field input[readonly]{
 
     background:#f5f5f5;
+
+}
+
+/*=========================================================
+BLUETOOTH CARD
+=========================================================*/
+
+.bluetooth-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-self:start;
 
 }
 
@@ -951,11 +984,11 @@ TABLET LANDSCAPE
 
 @media (max-width:1200px){
 
-    .main-layout{
+    .content-layout{
 
         grid-template-columns:
 
-            320px
+            300px
 
             1fr;
 
@@ -973,16 +1006,14 @@ TABLET LANDSCAPE
 
     }
 
-    .main-layout{
+    .content-layout{
 
         grid-template-columns:
-
-            300px
-
+    
+            280px
+    
             1fr;
-
-        gap:10px;
-
+    
     }
 
     .diagnostic-layout{
@@ -1017,16 +1048,17 @@ PORTRAIT FALLBACK
 
     }
 
-    .main-layout{
+    .content-layout{
 
         grid-template-columns:1fr;
-
+    
     }
-
-    .diagnostic-layout{
-
-        grid-template-columns:1fr;
-
+    
+    .left-column,
+    .right-column{
+    
+        grid-template-rows:auto;
+    
     }
 
     .status-grid{
