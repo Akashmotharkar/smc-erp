@@ -103,6 +103,37 @@ APP
 }
 
 /*=========================================================
+CONTENT LAYOUT
+=========================================================*/
+
+.content-layout{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:14px;
+
+    min-height:0;
+
+}
+
+.left-column,
+.right-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    min-height:0;
+
+}
+
+/*=========================================================
 COMMON
 =========================================================*/
 
@@ -557,8 +588,6 @@ BLUETOOTH CARD
 
     flex-direction:column;
 
-    align-self:start;
-
 }
 
 /*=========================================================
@@ -826,6 +855,19 @@ LOG PANEL
 
 }
 
+.left-column > .card:last-child,
+.right-column > .card:last-child{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:0;
+
+}
+
 /*=========================================================
 LOG ITEMS
 =========================================================*/
@@ -1051,21 +1093,19 @@ PORTRAIT FALLBACK
     .content-layout{
 
         grid-template-columns:1fr;
-    
+
     }
-    
+
     .left-column,
     .right-column{
-    
-        grid-template-rows:auto;
-    
+
+        gap:10px;
+
     }
 
     .status-grid{
 
-        grid-template-columns:
-
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
 
     }
 
