@@ -125,6 +125,30 @@ const Parser = (() => {
         }
 
         /*---------------------------------------------
+        MILK ANALYZER PACKET
+        
+        {[1,4,0,],[2,2,16,03.1|08.7|30.82|],[3,1,0,],[4,1,0,]}
+        ---------------------------------------------*/
+        
+        result = parseMilkAnalyzerPacket(packet);
+        
+        if (result) {
+        
+            return buildResult(
+        
+                result,
+        
+                packet,
+        
+                metadata,
+        
+                'MilkAnalyzer'
+        
+            );
+        
+        }
+
+        /*---------------------------------------------
         FORMAT 1
         FAT=4.2,SNF=8.7,CLR=28
         ---------------------------------------------*/
@@ -206,38 +230,91 @@ const Parser = (() => {
 
     function buildResult(values, rawPacket, metadata, parserType) {
 
-    return {
-
-        fat: values.fat,
-
-        snf: values.snf,
-
-        clr: values.clr,
-
-        parser: parserType,
-
-        raw: rawPacket,
-
-        ascii: metadata.ascii,
-
-        hex: metadata.hex,
-
-        timestamp: metadata.timestamp,
-
-        device: metadata.device
-
-    };
-
-}
-
-function isValidResult(values) {
-
-    return Number.isFinite(values.fat) &&
-           Number.isFinite(values.snf) &&
-           Number.isFinite(values.clr);
-
-}
+            return {
+        
+                fat: values.fat,
+        
+                snf: values.snf,
+        
+                clr: values.clr,
+        
+                parser: parserType,
+        
+                raw: rawPacket,
+        
+                ascii: metadata.ascii,
+        
+                hex: metadata.hex,
+        
+                timestamp: metadata.timestamp,
+        
+                device: metadata.device
+        
+            };
+        
+        }
+        
+        function isValidResult(values) {
+        
+            return Number.isFinite(values.fat) &&
+                   Number.isFinite(values.snf) &&
+                   Number.isFinite(values.clr);
+        
+        }
   
+    /*=====================================================
+    MILK ANALYZER PARSER
+    
+    Example
+    
+    {[1,4,0,],[2,2,16,03.1|08.7|30.82|],[3,1,0,],[4,1,0,]}
+    
+    =====================================================*/
+    
+    function parseMilkAnalyzerPacket(packet) {
+    
+        const match = packet.match(
+    
+            /\[2,2,16,([^,\]]+)\]/
+    
+        );
+    
+        if (!match) {
+    
+            return null;
+    
+        }
+    
+        const values = match[1]
+    
+            .split('|')
+    
+            .filter(v => v !== '');
+    
+        if (values.length < 3) {
+    
+            return null;
+    
+        }
+    
+        const result = {
+    
+            fat: Number(values[0]),
+    
+            snf: Number(values[1]),
+    
+            clr: Number(values[2])
+    
+        };
+    
+        return isValidResult(result)
+    
+            ? result
+    
+            : null;
+    
+    }
+    
     /*=====================================================
     KEY VALUE PARSER
     Example:
