@@ -28,6 +28,9 @@ const Parser = (() => {
 
             const ascii = packet.ascii || '';
 
+            Logger.info("Incoming ASCII Chunk:");
+            Logger.info(ascii);
+
             receiveBuffer += ascii;
 
             if (receiveBuffer.length > MAX_BUFFER_SIZE) {
@@ -39,12 +42,18 @@ const Parser = (() => {
             }
 
             const completePacket = extractPacket();
-
+            
             if (!completePacket) {
-
+            
+                Logger.info("Waiting for complete packet...");
+            
                 return null;
-
+            
             }
+            
+            Logger.success("Complete packet extracted");
+            
+            Logger.info(completePacket);
 
             addHistory(completePacket);
             
@@ -58,10 +67,13 @@ const Parser = (() => {
         catch (error) {
         
             Logger.error("Parser Exception");
-        
-            Logger.error(error.message);
-        
-            Logger.error(error.stack);
+            Logger.error(String(error));
+            
+            if (error.stack) {
+            
+                Logger.error(error.stack);
+            
+            }
         
             return null;
         
@@ -205,21 +217,25 @@ const Parser = (() => {
         4.2 8.7 28
         ---------------------------------------------*/
 
-        result = parseSpaceSeparated(packet);
-
-        if (result) {
-
-            return buildResult(
-                  result,
-                  packet,
-                  metadata,
-                  'SpaceSeparated'
-              );
-
-        }
-
-        return null;
-
+     result = parseSpaceSeparated(packet);
+    
+    if (result) {
+    
+        return buildResult(
+            result,
+            packet,
+            metadata,
+            'SpaceSeparated'
+        );
+    
+    }
+    
+    Logger.error("All parsers failed.");
+    Logger.error("Packet:");
+    Logger.error(packet);
+    
+    return null;
+    
     }
 
     /*=====================================================
@@ -291,8 +307,9 @@ const Parser = (() => {
         Logger.success(match[1]);
     
         const values = match[1]
-            .split('|')
-            .filter(Boolean);
+                .split('|')
+                .map(v => v.trim())
+                .filter(v => v.length > 0);
     
         Logger.info("Values Count: " + values.length);
         Logger.info("Values: " + JSON.stringify(values));
