@@ -272,47 +272,47 @@ const Parser = (() => {
     =====================================================*/
     
     function parseMilkAnalyzerPacket(packet) {
-    
-        const match = packet.match(
-    
-            /\[2,2,16,([^,\]]+)\]/
-    
-        );
-    
-        if (!match) {
-    
-            return null;
-    
-        }
-    
-        const values = match[1]
-    
-            .split('|')
-    
-            .filter(v => v !== '');
-    
-        if (values.length < 3) {
-    
-            return null;
-    
-        }
-    
-        const result = {
-    
-            fat: Number(values[0]),
-    
-            snf: Number(values[1]),
-    
-            clr: Number(values[2])
-    
-        };
-    
-        return isValidResult(result)
-    
-            ? result
-    
-            : null;
-    
+
+    Logger.info(packet);
+
+    const match = packet.match(
+        /\[2,2,16,(.*?)\]/
+    );
+
+    if (!match) {
+
+        Logger.error("Milk Analyzer Regex Failed");
+
+        return null;
+
+    }
+
+    Logger.success(match[1]);
+
+    const values = match[1]
+        .split('|')
+        .filter(v => v !== '');
+
+    if (values.length < 3) {
+
+        return null;
+
+    }
+
+    const result = {
+
+        fat: Number(values[0]),
+
+        snf: Number(values[1]),
+
+        clr: Number(values[2])
+
+    };
+
+    return isValidResult(result)
+        ? result
+        : null;
+
     }
     
     /*=====================================================
