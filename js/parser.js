@@ -272,47 +272,74 @@ const Parser = (() => {
     =====================================================*/
     
     function parseMilkAnalyzerPacket(packet) {
-
-    Logger.info(packet);
-
-    const match = packet.match(
-        /\[2,2,16,(.*?)\]/
-    );
-
-    if (!match) {
-
-        Logger.error("Milk Analyzer Regex Failed");
-
-        return null;
-
-    }
-
-    Logger.success(match[1]);
-
-    const values = match[1]
-        .split('|')
-        .filter(v => v !== '');
-
-    if (values.length < 3) {
-
-        return null;
-
-    }
-
-    const result = {
-
-        fat: Number(values[0]),
-
-        snf: Number(values[1]),
-
-        clr: Number(values[2])
-
-    };
-
-    return isValidResult(result)
-        ? result
-        : null;
-
+    
+        Logger.info("=== Milk Analyzer Parser ===");
+        Logger.info("Packet:");
+        Logger.info(packet);
+    
+        const match = packet.match(
+            /\[2,2,16,([^]]+)\]/
+        );
+    
+        if (!match) {
+    
+            Logger.error("Milk Analyzer Regex Failed");
+    
+            return null;
+    
+        }
+    
+        Logger.success("Regex Match:");
+        Logger.success(match[1]);
+    
+        const values = match[1]
+            .split('|')
+            .filter(Boolean);
+    
+        Logger.info("Values Count: " + values.length);
+        Logger.info("Values: " + JSON.stringify(values));
+    
+        if (values.length < 3) {
+    
+            Logger.error("Less than 3 values found.");
+    
+            return null;
+    
+        }
+    
+        const result = {
+    
+            fat: parseFloat(values[0]),
+    
+            snf: parseFloat(values[1]),
+    
+            clr: parseFloat(values[2])
+    
+        };
+    
+        Logger.info("Parsed Result:");
+        Logger.info(JSON.stringify(result));
+    
+        if (!isValidResult(result)) {
+    
+            Logger.error("Invalid Result");
+    
+            Logger.error(
+                "fat=" + result.fat +
+                ", snf=" + result.snf +
+                ", clr=" + result.clr
+            );
+    
+            return null;
+    
+        }
+    
+        Logger.success(
+            "Milk Analyzer Parsed Successfully"
+        );
+    
+        return result;
+    
     }
     
     /*=====================================================
