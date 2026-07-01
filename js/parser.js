@@ -57,6 +57,12 @@ const Parser = (() => {
 
         catch (error) {
         
+            Logger.error("Parser Exception");
+        
+            Logger.error(error.message);
+        
+            Logger.error(error.stack);
+        
             return null;
         
         }
@@ -124,36 +130,28 @@ const Parser = (() => {
 
         }
 
+        Logger.info("parsePacket() called");
+        Logger.info(packet);
+
         /*---------------------------------------------
         MILK ANALYZER PACKET
         
         {[1,4,0,],[2,2,16,03.1|08.7|30.82|],[3,1,0,],[4,1,0,]}
         ---------------------------------------------*/
-        
-        result = parseMilkAnalyzerPacket(packet);
+        let result = parseMilkAnalyzerPacket(packet);
         
         if (result) {
         
             return buildResult(
-        
                 result,
-        
                 packet,
-        
                 metadata,
-        
                 'MilkAnalyzer'
-        
             );
         
         }
-
-        /*---------------------------------------------
-        FORMAT 1
-        FAT=4.2,SNF=8.7,CLR=28
-        ---------------------------------------------*/
-
-        let result = parseKeyValue(packet);
+        
+        result = parseKeyValue(packet);
 
         if (result) {
 
